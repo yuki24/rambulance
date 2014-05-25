@@ -4,6 +4,7 @@
 .config
 .yardoc
 Gemfile.lock
+gemfiles/*.lock
 InstalledFiles
 _yardoc
 coverage
@@ -20,3 +21,4 @@ tmp
 *.o
 *.a
 mkmf.log
+*.log
