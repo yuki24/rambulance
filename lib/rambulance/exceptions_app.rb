@@ -26,7 +26,7 @@ module Rambulance
     end
 
     def template_path
-      "#{Rambulance.view_path}/#{status}"
+      "#{Rambulance.view_path}/#{status_in_words}"
     end
   end
 end
