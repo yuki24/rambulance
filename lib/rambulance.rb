@@ -1,3 +1,4 @@
+require "action_dispatch"
 require "rambulance/version"
 require "rambulance/railtie"
 
