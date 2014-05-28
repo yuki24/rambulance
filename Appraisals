@@ -5,15 +5,15 @@ appraise "rails_32" do
 end
 
 appraise "rails_40" do
-  gem "activesupport", "~> 3.2.0"
-  gem "actionpack", "~> 3.2.0"
-  gem "railties", "~> 3.2.0"
-end
-
-appraise "rails_41" do
   gem "activesupport", "~> 4.0.0"
   gem "actionpack", "~> 4.0.0"
   gem "railties", "~> 4.0.0"
+end
+
+appraise "rails_41" do
+  gem "activesupport", "~> 4.1.0"
+  gem "actionpack", "~> 4.1.0"
+  gem "railties", "~> 4.1.0"
 end
 
 appraise "rails_edge" do
