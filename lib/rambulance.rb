@@ -4,23 +4,21 @@ require "rambulance/railtie"
 
 module Rambulance
 
+  # List of custom pairs of cexception/corresponding http status.
   mattr_reader :rescue_responses
   @@rescue_responses = {}
 
-  mattr_reader :layout_name
+  # The template name for the layout of the error pages.
+  mattr_accessor :layout_name
   @@layout_name = "error"
 
+  # The directry name to organize error page templates.
   mattr_accessor :view_path
   @@view_path = "errors"
 
-  def self.rescue_responses=(exception_mapping)
-    @@rescue_responses = exception_mapping
-    ActionDispatch::ExceptionWrapper.rescue_responses.merge!(exception_mapping)
-  end
-
-  def self.layout_name=(layout_name)
-    @@layout_name = layout_name
-    ::Rambulance::ExceptionsApp.layout(layout_name)
+  def self.rescue_responses=(rescue_responses)
+    @@rescue_responses = rescue_responses
+    ActionDispatch::ExceptionWrapper.rescue_responses.merge!(rescue_responses)
   end
 
   def self.setup

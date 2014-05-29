@@ -1,7 +1,5 @@
 module Rambulance
   class ExceptionsApp < ActionController::Base
-    layout Rambulance.layout_name
-
     def self.call(env)
       action(:render_error).call(env)
     end
@@ -12,7 +10,10 @@ module Rambulance
       @_body            = { :status => @_status, :error => Rack::Utils::HTTP_STATUS_CODES.fetch(@_status.to_i, Rack::Utils::HTTP_STATUS_CODES[500]) }
 
       public_send(status_in_words)    if respond_to?(status_in_words)
-      render(template: template_path) if response_body.blank?
+
+      if response_body.blank?
+        render(template: template_path, layout: Rambulance.layout_name)
+      end
     end
 
     private
