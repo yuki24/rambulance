@@ -3,10 +3,10 @@ script: "bundle install && bundle exec rake spec:all"
 rvm:
   - 1.9.3
   - 2.0.0
-  - 2.1.0
-  - 2.1.1
-  - 2.1.2
+  - 2.1
   - ruby-head
+  - jruby
+  - rbx-2
 
 gemfile:
   - gemfiles/rails_32.gemfile
