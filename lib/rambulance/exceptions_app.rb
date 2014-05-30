@@ -19,7 +19,7 @@ module Rambulance
     private
 
     def status_in_words
-      ActionDispatch::ExceptionWrapper.rescue_responses[exception.class.to_s]
+      Rack::Utils::SYMBOL_TO_STATUS_CODE.invert[status.to_i]
     end
 
     def exception
