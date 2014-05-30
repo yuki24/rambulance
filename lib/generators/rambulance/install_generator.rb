@@ -15,6 +15,7 @@ BANNER
 
       desc ''
       def copy_templates #:nodoc:
+        say "generating templates:"
         filename_pattern = File.join(self.class.source_root, "views", "*.html.#{template_engine}")
         Dir.glob(filename_pattern).map {|f| File.basename f }.each do |f|
           copy_file "views/#{f}", "app/views/errors/#{f}"
@@ -22,10 +23,12 @@ BANNER
       end
 
       def copy_layout #:nodoc:
+        say "\ncopying app/views/layouts/application.html.#{template_engine} to app/views/layouts/error.html.#{template_engine}:"
         copy_file "../../../../app/views/layouts/application.html.#{template_engine}", "app/views/layouts/error.html.#{template_engine}"
       end
 
       def copy_initializer #:nodoc:
+        say "\ngenerating initializer:"
         copy_file "rambulance.rb", "config/initializers/rambulance.rb"
       end
 
