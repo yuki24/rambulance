@@ -17,7 +17,7 @@ namespace :spec do
 
   desc "Run Tests with a custom exceptions app"
   task :custom do
-    sh "CUSTOM_EXCEPTIONS_APP=1 bundle exec rake -t spec"
+    sh "bundle exec rake -t spec CUSTOM_EXCEPTIONS_APP=1"
   end
 
   desc "Run tests with both of the default and custom apps"
