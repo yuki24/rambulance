@@ -20,6 +20,11 @@ BANNER
         Dir.glob(filename_pattern).map {|f| File.basename f }.each do |f|
           copy_file "views/#{f}", "app/views/errors/#{f}"
         end
+
+        filename_pattern = File.join(self.class.source_root, "views", "*.json.jbuilder")
+        Dir.glob(filename_pattern).map {|f| File.basename f }.each do |f|
+          copy_file "views/#{f}", "app/views/errors/#{f}"
+        end
       end
 
       def copy_layout #:nodoc:
