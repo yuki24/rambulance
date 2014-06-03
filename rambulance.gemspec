@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "tzinfo"
   spec.add_development_dependency "jbuilder"
   spec.add_development_dependency "rspec"
-  spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency "rspec-rails", '~> 2.14.1'
   spec.add_development_dependency "capybara"
   spec.add_development_dependency "appraisal"
 end
