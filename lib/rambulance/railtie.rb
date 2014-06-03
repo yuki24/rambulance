@@ -12,5 +12,15 @@ module Rambulance
         app.config.exceptions_app = ::Rambulance::ExceptionsApp
       end
     end
+
+    initializer 'rambulance' do |app|
+      ActiveSupport.on_load(:after_initialize) do
+        if Rails.env.development?
+          Rails.application.routes.append do
+            mount app.config.exceptions_app, at: '/rambulance'
+          end
+        end
+      end
+    end
   end
 end

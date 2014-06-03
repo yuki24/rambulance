@@ -1,8 +1,9 @@
 module Rambulance
   class ExceptionsApp < ActionController::Base
     def self.call(env)
-      exception = env["action_dispatch.exception"]
+      exception       = env["action_dispatch.exception"]
       status_in_words = ActionDispatch::ExceptionWrapper.rescue_responses[exception.to_s]
+
       action(status_in_words).call(env)
     end
 
