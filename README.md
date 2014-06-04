@@ -1,4 +1,4 @@
-# Rambulance
+# Rambulance [![Build Status](https://travis-ci.org/yuki24/rambulance.svg?branch=master)](https://travis-ci.org/yuki24/rambulance)
 
 Rambulance provides a simple and safe way to dynamically render error pages for Rails apps.
 
