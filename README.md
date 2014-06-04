@@ -30,16 +30,16 @@ And then execute:
 $ rails g rambulance:install
 ```
 
-Now you can start editing templateslike `app/views/errors/not_found.html.erb`. Edit, run `rails server` and open [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/not_found)!
+Now you can start editing templateslike `app/views/errors/404.html.erb`. Edit, run `rails server` and open [`localhost:3000/rambulance/404`](http://localhost:3000/rambulance/404)!
 
 ## Setting Pairs of Exceptions and HTTP Statuses
 
 Open `config/initializers/rambulance.rb` and to configure the list of pairs of exception/corresponding http status.
 For example, if you want to display:
 
- * unprocessable entity(422) page for `ActiveRecord::RecordNotUnique`
- * forbidden(403) page for `CanCan::AccessDenied`
- * not found(404) page for `YourCustomException`
+ * 422(unprocessable entity) for `ActiveRecord::RecordNotUnique`
+ * 403(forbidden) for `CanCan::AccessDenied`
+ * 404(not found) for `YourCustomException`
 
 Then do the following:
 
@@ -57,18 +57,18 @@ config.rescue_responses = {
 There are 2 ways of editing the templates.
 
 <!---
-### Directly Open [`localhost:3000/rambulance`](http://localhost:3000/rambulance) in Your Browser
+### Open [`localhost:3000/rambulance`](http://localhost:3000/rambulance) in Your Browser
 
 This page tells all the error pages as well as all the pairs of exceptions/corresponding http status. This is useful when you want to edit templates without changing Rails configuration. Click on one of the links in the page to see what the error page looks like.
 
 **This feature hasn't been implemented yet.**
 -->
 
-### Directly Open `localhost:3000/rambulance/***` in Your Browser
+### Open `localhost:3000/rambulance/***` in Your Browser
 
 Just go to one of the error pages via Rambulance:
- * [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/not_found) or
- * [`localhost:3000/rambulance/internal_server_error`](http://localhost:3000/rambulance/internal_server_error)
+ * [`localhost:3000/rambulance/404`](http://localhost:3000/rambulance/404) or
+ * [`localhost:3000/rambulance/500`](http://localhost:3000/rambulance/500)
 
 This is useful when you want to edit templates without changing Rails configuration.
 
