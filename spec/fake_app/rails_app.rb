@@ -42,13 +42,17 @@ class ApplicationController < ActionController::Base
   end
 end
 class UsersController < ApplicationController
-  skip_filter :bad_filter, only: :index
+  skip_filter :bad_filter, except: :show
 
   def index
     raise CustomException
   end
 
   def show; end
+
+  def new
+    raise ActionController::InvalidAuthenticityToken
+  end
 end
 
 # helpers

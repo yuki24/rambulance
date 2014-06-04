@@ -10,6 +10,13 @@ feature 'Error json responses', if: !ENV["CUSTOM_EXCEPTIONS_APP"] do
     super(path, nil, "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json")
   end
 
+  scenario 'Unprocessable entity due to ActionController:InvalidAuthenticityToken but without its template' do
+    get '/users/new'
+
+    response.status.should == 422
+    json_response['message'].should == "Something went wrong"
+  end
+
   scenario 'Internal server error due to RuntimeError' do
     get '/users/1.json'
 
