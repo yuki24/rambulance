@@ -13,9 +13,7 @@ module Rambulance
       status_in_words = if exception
         ActionDispatch::ExceptionWrapper.rescue_responses[exception.to_s]
       else
-        env["PATH_INFO"][1..-1].to_sym.tap do |status_in_words|
-          env["PATH_INFO"] = "/#{Rack::Utils::SYMBOL_TO_STATUS_CODE[status_in_words]}"
-        end
+        ERROR_HTTP_STATUSES[env["PATH_INFO"][1..-1].to_i]
       end
 
       action(status_in_words).call(env)
