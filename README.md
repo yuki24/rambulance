@@ -6,7 +6,7 @@ Rambulance provides a simple and safe way to dynamically render error pages for 
 
 ### Simple and Safe
 
-Rambulance's exceptions app is simple, skinny and well-tested. It  inherits `ActionController::Base`, so it just works fine even if your `ApplicationController` has an issue.
+Rambulance's exceptions app is simple, skinny and well-tested. It  inherits `ActionController::Base`, so it works fine even if your `ApplicationController` has an issue.
 
 ### Flexible
 
