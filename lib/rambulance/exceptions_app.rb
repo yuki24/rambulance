@@ -26,7 +26,7 @@ module Rambulance
     ERROR_HTTP_STATUSES.values.each do |status_in_words|
       eval <<-ACTION
         def #{status_in_words}
-          render(template_exists?(error_path) ? error_path : error_path(500))
+          render(template_exists?(error_path) ? error_path : error_path(:internal_server_error))
         end
       ACTION
     end
@@ -49,8 +49,8 @@ module Rambulance
       env["action_dispatch.exception"]
     end
 
-    def error_path(status = status())
-      "#{Rambulance.view_path}/#{status}"
+    def error_path(status_in_words = status_in_words())
+      "#{Rambulance.view_path}/#{status_in_words}"
     end
   end
 end
