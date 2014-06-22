@@ -21,7 +21,7 @@ You don't have to configure things that every single person has to do and Rambul
 Add this line to your application's Gemfile:
 
 ```
-gem 'rambulance', github: 'yuki24/rambulance'
+gem 'rambulance'
 ```
 
 And then execute:
