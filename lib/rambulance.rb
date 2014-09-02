@@ -7,7 +7,7 @@ module Rambulance
   mattr_reader :rescue_responses
   @@rescue_responses = {}
 
-  # The template name for the layout of the error pages.
+  # The name of the layout file for the error pages.
   mattr_accessor :layout_name
   @@layout_name = "error"
 
