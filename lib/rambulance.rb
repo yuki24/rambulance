@@ -3,7 +3,7 @@ require "rambulance/railtie"
 
 module Rambulance
 
-  # List of custom pairs of cexception/corresponding http status.
+  # List of custom pairs of exception/corresponding http status.
   mattr_reader :rescue_responses
   @@rescue_responses = {}
 
