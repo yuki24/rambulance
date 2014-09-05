@@ -38,6 +38,18 @@ feature 'Error pages' do
       page.body.should have_content "Error page"
       page.body.should have_content "Page not found."
     end
+
+    context "with a custom layout name" do
+      before do
+        @org, Rambulance.layout_name = Rambulance.layout_name, "application"
+      end
+      after { Rambulance.layout_name = @org }
+
+      scenario 'uses the custom layout' do
+        visit '/doesnt_exist'
+        page.body.should have_content "Application page"
+      end
+    end
   end
 
   context "With a custom exception app", if: ENV["CUSTOM_EXCEPTIONS_APP"] do
