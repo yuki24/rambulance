@@ -8,6 +8,8 @@ module Rambulance
   end.invert
 
   class ExceptionsApp < ActionController::Base
+    layout :layout_name
+
     def self.call(env)
       exception       = env["action_dispatch.exception"]
       status_in_words = if exception
@@ -24,7 +26,7 @@ module Rambulance
     ERROR_HTTP_STATUSES.values.each do |status_in_words|
       eval <<-ACTION
         def #{status_in_words}
-          render(template_exists?(error_path) ? error_path : error_path(:internal_server_error), layout: Rambulance.layout_name)
+          render(template_exists?(error_path) ? error_path : error_path(:internal_server_error))
         end
       ACTION
     end
@@ -49,6 +51,10 @@ module Rambulance
 
     def error_path(status_in_words = status_in_words())
       "#{Rambulance.view_path}/#{status_in_words}"
+    end
+
+    def layout_name
+      Rambulance.layout_name
     end
   end
 end
