@@ -1,4 +1,6 @@
 class ExceptionsApp < Rambulance::ExceptionsApp
+  def not_found; end
+
   def internal_server_error
     render inline: <<-BODY
       <html>

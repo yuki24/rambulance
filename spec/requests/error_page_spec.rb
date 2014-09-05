@@ -55,6 +55,14 @@ feature 'Error pages' do
   context "With a custom exception app", if: ENV["CUSTOM_EXCEPTIONS_APP"] do
     it_behaves_like "an action that renders 500 page if the template is missing"
 
+    scenario 'Not found due to ActinoController::RoutingError' do
+      visit '/doesnt_exist'
+
+      page.status_code.should == 404
+      page.body.should have_content "Error page"
+      page.body.should have_content "Page not found."
+    end
+
     scenario 'Internal server error due to RuntimeError' do
       visit '/users/1'
 

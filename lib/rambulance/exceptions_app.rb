@@ -50,11 +50,15 @@ module Rambulance
     end
 
     def error_path(status_in_words = status_in_words())
-      "#{Rambulance.view_path}/#{status_in_words}"
+      "#{controller_path}/#{status_in_words}"
     end
 
     def layout_name
       Rambulance.layout_name
+    end
+
+    def controller_path
+      Rambulance.view_path
     end
   end
 end
