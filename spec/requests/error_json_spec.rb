@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'spec_helper'
 
-feature 'Error json responses', if: !ENV["CUSTOM_EXCEPTIONS_APP"] do
+feature 'Error json responses', if: !ENV["CUSTOM_EXCEPTIONS_APP"], type: :request do
   def json_response
     JSON.parse(response.body)
   end
@@ -13,28 +13,28 @@ feature 'Error json responses', if: !ENV["CUSTOM_EXCEPTIONS_APP"] do
   scenario 'Unprocessable entity due to ActionController:InvalidAuthenticityToken but without its template' do
     get '/users/new'
 
-    response.status.should == 422
-    json_response['message'].should == "Something went wrong"
+    expect(response.status).to eq(422)
+    expect(json_response['message']).to eq("Something went wrong")
   end
 
   scenario 'Internal server error due to RuntimeError' do
     get '/users/1.json'
 
-    response.status.should == 500
-    json_response['message'].should == "Something went wrong"
+    expect(response.status).to eq(500)
+    expect(json_response['message']).to eq("Something went wrong")
   end
 
   scenario 'Not found due to CustomException' do
     get '/users.json'
 
-    response.status.should == 404
-    json_response['message'].should == "Page not found"
+    expect(response.status).to eq(404)
+    expect(json_response['message']).to eq("Page not found")
   end
 
   scenario 'Not found due to ActinoController::RoutingError' do
     get '/doesnt_exist.json'
 
-    response.status.should == 404
-    json_response['message'].should == "Page not found"
+    expect(response.status).to eq(404)
+    expect(json_response['message']).to eq("Page not found")
   end
 end

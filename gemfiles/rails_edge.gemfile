@@ -9,6 +9,5 @@ git "git://github.com/rails/rails.git" do
 end
 
 gem "minitest", "~> 5.3.4"
-gem "rspec-rails", "2.99.0.beta1"
 
 gemspec :path => "../"

@@ -6,9 +6,9 @@ feature 'Error pages' do
     scenario 'Unprocessable entity due to ActionController:InvalidAuthenticityToken but without its template' do
       visit '/users/new'
 
-      page.status_code.should == 422
-      page.body.should have_content "Error page"
-      page.body.should have_content "Something went wrong."
+      expect(page.status_code).to eq(422)
+      expect(page.body).to have_content "Error page"
+      expect(page.body).to have_content "Something went wrong."
     end
   end
 
@@ -18,25 +18,25 @@ feature 'Error pages' do
     scenario 'Internal server error due to RuntimeError' do
       visit '/users/1'
 
-      page.status_code.should == 500
-      page.body.should have_content "Error page"
-      page.body.should have_content "Something went wrong."
+      expect(page.status_code).to eq(500)
+      expect(page.body).to have_content "Error page"
+      expect(page.body).to have_content "Something went wrong."
     end
 
     scenario 'Not found due to CustomException' do
       visit '/users'
 
-      page.status_code.should == 404
-      page.body.should have_content "Error page"
-      page.body.should have_content "Page not found."
+      expect(page.status_code).to eq(404)
+      expect(page.body).to have_content "Error page"
+      expect(page.body).to have_content "Page not found."
     end
 
     scenario 'Not found due to ActinoController::RoutingError' do
       visit '/doesnt_exist'
 
-      page.status_code.should == 404
-      page.body.should have_content "Error page"
-      page.body.should have_content "Page not found."
+      expect(page.status_code).to eq(404)
+      expect(page.body).to have_content "Error page"
+      expect(page.body).to have_content "Page not found."
     end
 
     context "with a custom layout name" do
@@ -47,7 +47,7 @@ feature 'Error pages' do
 
       scenario 'uses the custom layout' do
         visit '/doesnt_exist'
-        page.body.should have_content "Application page"
+        expect(page.body).to have_content "Application page"
       end
     end
   end
@@ -58,16 +58,16 @@ feature 'Error pages' do
     scenario 'Not found due to ActinoController::RoutingError' do
       visit '/doesnt_exist'
 
-      page.status_code.should == 404
-      page.body.should have_content "Error page"
-      page.body.should have_content "Page not found."
+      expect(page.status_code).to eq(404)
+      expect(page.body).to have_content "Error page"
+      expect(page.body).to have_content "Page not found."
     end
 
     scenario 'Internal server error due to RuntimeError' do
       visit '/users/1'
 
-      page.status_code.should == 500
-      page.body.should have_content "Custom error page"
+      expect(page.status_code).to eq(500)
+      expect(page.body).to have_content "Custom error page"
     end
   end
 end

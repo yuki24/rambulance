@@ -24,5 +24,4 @@ appraise "rails_edge" do
   end
 
   gem 'minitest', '~> 5.3.4'
-  gem 'rspec-rails', '2.99.0.beta1'
 end
