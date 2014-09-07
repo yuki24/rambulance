@@ -23,6 +23,10 @@ module Rambulance
       action(status_in_words).call(env)
     end
 
+    def self.local_prefixes
+      [Rambulance.view_path]
+    end if ActionPack::VERSION::STRING >= "4.2.0"
+
     ERROR_HTTP_STATUSES.values.each do |status_in_words|
       eval <<-ACTION
         def #{status_in_words}
