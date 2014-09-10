@@ -30,7 +30,7 @@ And then execute:
 $ rails g rambulance:install
 ```
 
-Now you can start editing templates like `app/views/errors/not_found.html.erb`. Edit, run `rails server` and open [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/404)!
+Now you can start editing templates like `app/views/errors/not_found.html.erb`. Edit, run `rails server` and open [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/not_found)!
 
 ## Setting Pairs of Exceptions and HTTP Statuses
 
@@ -67,8 +67,8 @@ This page tells all the error pages as well as all the pairs of exceptions/corre
 ### Open `localhost:3000/rambulance/***` in Your Browser
 
 Just go to one of the error pages via Rambulance:
- * [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/404) or
- * [`localhost:3000/rambulance/internal_server_error`](http://localhost:3000/rambulance/500)
+ * [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/not_found) or
+ * [`localhost:3000/rambulance/internal_server_error`](http://localhost:3000/rambulance/internal_server_error)
 
 This is useful when you want to edit templates without changing Rails configuration.
 
