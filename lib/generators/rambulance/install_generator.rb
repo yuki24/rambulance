@@ -27,11 +27,6 @@ BANNER
         end
       end
 
-      def copy_layout #:nodoc:
-        say "\ncopying app/views/layouts/application.html.#{template_engine} to app/views/layouts/error.html.#{template_engine}:"
-        copy_file Rails.root.join("app/views/layouts/application.html.#{template_engine}"), "app/views/layouts/error.html.#{template_engine}"
-      end
-
       def copy_initializer #:nodoc:
         say "\ngenerating initializer:"
         copy_file "rambulance.rb", "config/initializers/rambulance.rb"
