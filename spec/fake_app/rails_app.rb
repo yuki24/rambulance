@@ -26,6 +26,7 @@ class CustomException < StandardError; end
 
 Rambulance.setup do |config|
   config.rescue_responses = {
+    'TypeError'       => :bad_request,
     'CustomException' => :not_found
   }
 end
