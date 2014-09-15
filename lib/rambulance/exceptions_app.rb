@@ -39,8 +39,9 @@ module Rambulance
 
     def process_action(*)
       begin
-        request.formats
-      rescue ActionController::BadRequest
+        request.GET
+      rescue bad_request_exception
+        env["MALFORMED_QUERY_STRING"], env["QUERY_STRING"] = env["QUERY_STRING"], ""
       end
 
       super
@@ -72,6 +73,12 @@ module Rambulance
 
     def controller_path
       Rambulance.view_path
+    end
+
+    def bad_request_exception
+      ActionController::BadRequest
+    rescue NameError
+      TypeError # Rails 3.2 doesn't know about ActionController::BadRequest
     end
   end
 end
