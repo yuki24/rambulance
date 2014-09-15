@@ -37,6 +37,15 @@ module Rambulance
 
     private
 
+    def process_action(*)
+      begin
+        request.formats
+      rescue ActionController::BadRequest
+      end
+
+      super
+    end
+
     def send_action(name, *args)
       @_status          = env["PATH_INFO"][1..-1].to_i
       @_response.status = @_status

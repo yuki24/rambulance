@@ -53,6 +53,8 @@ class UsersController < ApplicationController
   def new
     raise ActionController::InvalidAuthenticityToken
   end
+
+  def create; end
 end
 
 # helpers
