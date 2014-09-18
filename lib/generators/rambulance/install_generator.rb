@@ -28,14 +28,18 @@ BANNER
       end
 
       def copy_initializer #:nodoc:
-        say "\ngenerating initializer:"
-        copy_file "rambulance.rb", "config/initializers/rambulance.rb"
+        say "\n" "generating initializer:"
+        template "rambulance.rb", "config/initializers/rambulance.rb"
       end
 
       private
 
       def template_engine
         options[:template_engine].try(:to_s).try(:downcase) || 'erb'
+      end
+
+      def longest_error_name_size
+        ActionDispatch::ExceptionWrapper.rescue_responses.keys.sort_by(&:size).last.size
       end
     end
   end

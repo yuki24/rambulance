@@ -3,20 +3,11 @@ Rambulance.setup do |config|
   # List of pairs of exception/corresponding http status. In Rails, the default
   # mappings are below:
   #
-  #   "ActionController::RoutingError"             => :not_found,
-  #   "AbstractController::ActionNotFound"         => :not_found,
-  #   "ActionController::MethodNotAllowed"         => :method_not_allowed,
-  #   "ActionController::UnknownHttpMethod"        => :method_not_allowed,
-  #   "ActionController::NotImplemented"           => :not_implemented,
-  #   "ActionController::UnknownFormat"            => :not_acceptable,
-  #   "ActionController::InvalidAuthenticityToken" => :unprocessable_entity,
-  #   "ActionDispatch::ParamsParser::ParseError"   => :bad_request,
-  #   "ActionController::BadRequest"               => :bad_request,
-  #   "ActionController::ParameterMissing"         => :bad_request,
-  #   "ActiveRecord::RecordNotFound"               => :not_found,
-  #   "ActiveRecord::StaleObjectError"             => :conflict,
-  #   "ActiveRecord::RecordInvalid"                => :unprocessable_entity,
-  #   "ActiveRecord::RecordNotSaved"               => :unprocessable_entity
+<%=
+  ActionDispatch::ExceptionWrapper.rescue_responses.map do |error_class, status|
+    "  #   #{error_class.ljust(longest_error_name_size)} => :#{status}"
+  end.join(",\n")
+%>
   #
   # If you add exceptions in this config, Rambulance uses the pairs you defined
   # here *in addition* to the default maddings. You can also override the default
