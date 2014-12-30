@@ -17,9 +17,9 @@ appraise "rails_41" do
 end
 
 appraise "rails_42" do
-  gem "activesupport", "~> 4.2.0.beta1"
-  gem "actionpack", "~> 4.2.0.beta1"
-  gem "railties", "~> 4.2.0.beta1"
+  gem "activesupport", "~> 4.2.0"
+  gem "actionpack", "~> 4.2.0"
+  gem "railties", "~> 4.2.0"
 
   gem 'minitest', '~> 5.3.4'
 end
