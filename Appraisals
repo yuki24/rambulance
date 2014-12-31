@@ -8,6 +8,7 @@ appraise "rails_40" do
   gem "activesupport", "~> 4.0.0"
   gem "actionpack", "~> 4.0.0"
   gem "railties", "~> 4.0.0"
+  gem "test-unit" if RUBY_VERSION >= "2.2.0"
 end
 
 appraise "rails_41" do
