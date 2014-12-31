@@ -28,6 +28,10 @@ matrix:
       gemfile: gemfiles/rails_edge.gemfile
     - rvm: 2.1.5
       gemfile: gemfiles/rails_edge.gemfile
+    - rvm: 2.2.0
+      gemfile: gemfiles/rails_32.gemfile
+    - rvm: ruby-head
+      gemfile: gemfiles/rails_32.gemfile
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby
