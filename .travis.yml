@@ -26,9 +26,9 @@ matrix:
       gemfile: gemfiles/rails_edge.gemfile
     - rvm: 2.0.0
       gemfile: gemfiles/rails_edge.gemfile
-    - rvm: 2.1.5
+    - rvm: 2.1
       gemfile: gemfiles/rails_edge.gemfile
-    - rvm: 2.2.0
+    - rvm: 2.2
       gemfile: gemfiles/rails_32.gemfile
     - rvm: ruby-head
       gemfile: gemfiles/rails_32.gemfile
