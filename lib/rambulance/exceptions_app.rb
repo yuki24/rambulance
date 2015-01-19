@@ -80,5 +80,7 @@ module Rambulance
     rescue NameError
       TypeError # Rails 3.2 doesn't know about ActionController::BadRequest
     end
+
+    helper_method :status_in_words, :exception
   end
 end
