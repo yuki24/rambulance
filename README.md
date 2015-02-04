@@ -30,6 +30,11 @@ And then execute:
 $ rails g rambulance:install
 ```
 
+or specify the template engine by:
+```
+$ rails g rambulance:install -e slim
+```
+
 Now you can start editing templates like `app/views/errors/not_found.html.erb`. Edit, run `rails server` and open [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/not_found)!
 
 ## Setting Pairs of Exceptions and HTTP Statuses
