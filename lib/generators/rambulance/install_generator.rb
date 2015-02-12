@@ -6,7 +6,7 @@ module Rambulance
       class_option :template_engine,
         type: :string,
         aliases: '-e',
-        desc: 'Template engine for the views. Available options are "erb" and "haml".'
+        desc: 'Template engine for the views. Available options are "erb", "slim" and "haml".'
 
       class_option :error_layout,
         type: :string,
