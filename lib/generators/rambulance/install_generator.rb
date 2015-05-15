@@ -24,12 +24,7 @@ BANNER
       desc ''
       def copy_templates #:nodoc:
         say "generating templates:"
-        filename_pattern = File.join(self.class.source_root, "views", "*.html.#{template_engine}")
-        Dir.glob(filename_pattern).map {|f| File.basename f }.each do |f|
-          copy_file "views/#{f}", "app/views/errors/#{f}"
-        end
-
-        filename_pattern = File.join(self.class.source_root, "views", "*.json.jbuilder")
+        filename_pattern = File.join(self.class.source_root, "views", "*#{file_extname}")
         Dir.glob(filename_pattern).map {|f| File.basename f }.each do |f|
           copy_file "views/#{f}", "app/views/errors/#{f}"
         end
@@ -59,6 +54,15 @@ BANNER
 
       def longest_error_name_size
         ActionDispatch::ExceptionWrapper.rescue_responses.keys.sort_by(&:size).last.size
+      end
+
+      def file_extname
+        case template_engine
+        when "jbuilder"
+          ".json.jbuilder"
+        else
+          ".html.#{template_engine}"
+        end
       end
     end
   end
