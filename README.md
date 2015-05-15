@@ -35,7 +35,7 @@ or specify the template engine by:
 $ rails g rambulance:install -e slim
 ```
 
-Rambulance now support `erb`, `haml`, `slim` template engines, if you don't specify the `-e` option, erb will be used as default.
+Rambulance now support `erb`, `haml`, `slim`, `jbuilder` template engines, if you don't specify the `-e` option, erb will be used as default.
 
 Now you can start editing templates like `app/views/errors/not_found.html.erb`. Edit, run `rails server` and open [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/not_found)!
 
