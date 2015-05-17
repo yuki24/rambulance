@@ -12,6 +12,7 @@ rvm:
   - jruby
   - jruby-head
   - rbx-2.4.1
+  - rbx-2.5.3
 
 gemfile:
   - gemfiles/rails_32.gemfile
@@ -37,5 +38,6 @@ matrix:
     - rvm: jruby
     - rvm: jruby-head
     - rvm: rbx-2.4.1
+    - rvm: rbx-2.5.3
     - gemfile: gemfiles/rails_edge.gemfile
   fast_finish: true
