@@ -7,7 +7,19 @@ feature 'Error json response', if: !ENV["CUSTOM_EXCEPTIONS_APP"], type: :request
   end
 
   def get(path)
-    super(path, nil, "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json")
+    without_layouts do
+      super(path, nil, "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json")
+    end
+  end
+
+  def without_layouts
+    `mv spec/fake_app/app/views/layouts/application.html.erb .`
+    `mv spec/fake_app/app/views/layouts/error.html.erb .`
+
+    yield
+  ensure
+    `mv application.html.erb spec/fake_app/app/views/layouts/`
+    `mv error.html.erb spec/fake_app/app/views/layouts/`
   end
 
   scenario 'returns 422 json due to ActionController:InvalidAuthenticityToken but without its template' do

@@ -68,7 +68,7 @@ module Rambulance
     end
 
     def layout_name
-      Rambulance.layout_name
+      request.format.json? ? false : Rambulance.layout_name
     end
 
     def controller_path
