@@ -40,4 +40,5 @@ matrix:
     - rvm: rbx-2.4.1
     - rvm: rbx-2.5.3
     - gemfile: gemfiles/rails_edge.gemfile
+    - gemfile: gemfiles/rails_32.gem
   fast_finish: true
