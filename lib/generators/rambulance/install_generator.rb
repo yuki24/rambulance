@@ -8,11 +8,6 @@ module Rambulance
         aliases: '-e',
         desc: 'Template engine for the views. Available options are "erb", "slim" and "haml".'
 
-      class_option :error_layout,
-        type: :string,
-        aliases: '-l',
-        desc: 'Copies app/views/layout/application.html.erb to the specified layout name'
-
       def self.banner #:nodoc:
         <<-BANNER.chomp
 rails g rambulance:install
@@ -38,10 +33,8 @@ BANNER
       end
 
       def copy_layout #:nodoc:
-        return if layout_name == "application"
-
-        say "\n" "copying app/views/layouts/application.html.#{template_engine} to app/views/layouts/#{layout_name}.html.#{template_engine}:"
-        copy_file Rails.root.join("app/views/layouts/application.html.#{template_engine}"), "app/views/layouts/#{layout_name}.html.#{template_engine}"
+        say "\ncopying app/views/layouts/application.html.#{template_engine} to app/views/layouts/error.html.#{template_engine}:"
+        copy_file Rails.root.join("app/views/layouts/application.html.#{template_engine}"), "app/views/layouts/error.html.#{template_engine}"
       end
 
       def copy_initializer #:nodoc:
@@ -53,10 +46,6 @@ BANNER
 
       def template_engine
         options[:template_engine].try(:to_s).try(:downcase) || 'erb'
-      end
-
-      def layout_name
-        options[:error_layout].try(:to_s).try(:downcase) || "application"
       end
 
       def longest_error_name_size
