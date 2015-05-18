@@ -10,6 +10,12 @@ module Rambulance
   class ExceptionsApp < ActionController::Base
     layout :layout_name
 
+    BAD_REQUEST_EXCEPTION = begin
+                              ActionController::BadRequest
+                            rescue NameError
+                              TypeError # Rails 3.2 doesn't know about ActionController::BadRequest
+                            end
+
     def self.call(env)
       exception       = env["action_dispatch.exception"]
       status_in_words = if exception
@@ -40,7 +46,7 @@ module Rambulance
     def process_action(*)
       begin
         request.GET
-      rescue bad_request_exception
+      rescue BAD_REQUEST_EXCEPTION
         env["MALFORMED_QUERY_STRING"], env["QUERY_STRING"] = env["QUERY_STRING"], ""
       end
 
@@ -73,12 +79,6 @@ module Rambulance
 
     def controller_path
       Rambulance.view_path
-    end
-
-    def bad_request_exception
-      ActionController::BadRequest
-    rescue NameError
-      TypeError # Rails 3.2 doesn't know about ActionController::BadRequest
     end
 
     helper_method :status_in_words, :exception
