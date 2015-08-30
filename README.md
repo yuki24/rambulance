@@ -89,6 +89,33 @@ config.consider_all_requests_local = false
 
 This simulates how your production app displays error pages so you can actually raise an exception in your app and see how it works. Don't forget to change `consider_all_requests_local` back to _true_ after you tried this strategy.
 
+## Testing App that Use Rambulance
+
+For example(RSpec):
+
+```ruby
+RSpec.shared_context 'enable rambulance', rambulance: true do
+  before do
+    # This overrides the cached setting in Rails.application.config.consider_all_requests_local
+    Rails.application.env_config['action_dispatch.show_detailed_exceptions'] = false
+
+    # Render templates instead of raising exceptions.
+    Rails.application.env_config['action_dispatch.show_exceptions'] = true
+  end
+
+  after do
+    Rails.application.env_config['action_dispatch.show_detailed_exceptions'] = true
+    Rails.application.env_config['action_dispatch.show_exceptions'] = false
+  end
+end
+
+context 'invalid request', rambulance: true do
+  it do
+    # write test of error templates
+  end
+end
+```
+
 ## Custom Exceptions App
 
 If you want to do some more things in a exceptions app, you can also write your own custom exceptions app:
