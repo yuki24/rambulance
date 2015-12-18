@@ -10,7 +10,7 @@ Rambulance.setup do |config|
 %>
   #
   # If you add exceptions in this config, Rambulance uses the pairs you defined
-  # here *in addition* to the default maddings. You can also override the default
+  # here *in addition* to the default mappings. You can also override the default
   # mappings although you don't have to in most cases.
   # If Rambulance receives an exception that is not listed here, it'll render
   # the internal server error template and return 500 as http status.
