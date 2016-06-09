@@ -32,8 +32,13 @@ feature 'Error json response', if: !ENV["CUSTOM_EXCEPTIONS_APP"], type: :request
   scenario 'returns 500 json due to RuntimeError' do
     get '/users/1.json'
 
-    expect(response.status).to eq(500)
-    expect(json_response['message']).to eq("Something went wrong")
+    if Rails::VERSION::MAJOR >= 5
+      expect(response.status).to eq(204)
+      expect(response.body).to be_empty
+    else
+      expect(response.status).to eq(500)
+      expect(json_response['message']).to eq("Something went wrong")
+    end
   end
 
   scenario 'returns 404 json due to CustomException' do
