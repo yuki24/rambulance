@@ -16,9 +16,10 @@ feature 'Error page' do
     it_behaves_like "an action that renders 500 page if the template is missing"
 
     scenario 'displays 500 page due to RuntimeError' do
+      expected_status_code = Rails::VERSION::MAJOR >= 5 ? 406 : 500
       visit '/users/1'
 
-      expect(page.status_code).to eq(500)
+      expect(page.status_code).to eq(expected_status_code)
       expect(page.body).to have_content "Error page"
       expect(page.body).to have_content "Something went wrong."
     end
@@ -82,7 +83,8 @@ feature 'Error page' do
     scenario 'displays 500 page due to RuntimeError' do
       visit '/users/1'
 
-      expect(page.status_code).to eq(500)
+      expected_status_code = Rails::VERSION::MAJOR >= 5 ? 406 : 500
+      expect(page.status_code).to eq(expected_status_code)
       expect(page.body).to have_content "Custom error page"
     end
   end
