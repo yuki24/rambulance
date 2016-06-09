@@ -41,6 +41,16 @@ module Rambulance
       ACTION
     end
 
+    def process(action, *args)
+      if action.to_s.empty?
+        action = request.env["PATH_INFO"][1..-1].to_sym.tap do |status_in_words|
+          request.env["PATH_INFO"] = "/#{Rack::Utils::SYMBOL_TO_STATUS_CODE[status_in_words]}"
+        end
+      end
+
+      super
+    end
+
     private
 
     def process_action(*)
