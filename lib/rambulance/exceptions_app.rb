@@ -57,7 +57,7 @@ module Rambulance
       begin
         request.GET
       rescue BAD_REQUEST_EXCEPTION
-        env["MALFORMED_QUERY_STRING"], env["QUERY_STRING"] = env["QUERY_STRING"], ""
+        request.env["MALFORMED_QUERY_STRING"], request.env["QUERY_STRING"] = request.env["QUERY_STRING"], ""
       end
 
       super
@@ -76,7 +76,7 @@ module Rambulance
     end
 
     def exception
-      env["action_dispatch.exception"]
+      request.env["action_dispatch.exception"]
     end
 
     def error_path(status_in_words = status_in_words())
