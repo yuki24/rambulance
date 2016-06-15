@@ -1,6 +1,6 @@
 module Rambulance
   class Railtie < Rails::Railtie
-    initializer 'rambulance' do |app|
+    initializer 'rambulance', after: :prepend_helpers_path do |app|
       require "rambulance/exceptions_app"
 
       app.config.exceptions_app =
