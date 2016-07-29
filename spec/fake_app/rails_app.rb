@@ -1,5 +1,3 @@
-require 'action_controller/railtie'
-require 'action_view/railtie'
 require 'jbuilder'
 
 # config
@@ -22,12 +20,14 @@ end
 
 # custom exception class
 class CustomException < StandardError; end
+class ForbiddenException < StandardError; end
 
 Rambulance.setup do |config|
   config.layout_name = "error"
   config.rescue_responses = {
     'TypeError'       => :bad_request,
-    'CustomException' => :not_found
+    'CustomException' => :not_found,
+    'ForbiddenException' => :forbidden
   }
 end
 
@@ -56,7 +56,8 @@ class UsersController < ApplicationController
   end
 
   def create; end
-end
 
-# helpers
-Object.const_set(:ApplicationHelper, Module.new)
+  def edit
+    raise ForbiddenException
+  end
+end
