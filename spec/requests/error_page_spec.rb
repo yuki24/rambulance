@@ -56,6 +56,14 @@ feature 'Error page' do
       expect(page.body).to have_content "Page not found."
     end
 
+    scenario 'displays 403 page due to ForbiddenException' do
+      visit '/users/1/edit'
+
+      expect(page.status_code).to eq(403)
+      expect(page.body).to have_content "Error page"
+      expect(page.body).to have_content "Forbidden."
+    end
+
     context "with a custom layout name" do
       before do
         @org, Rambulance.layout_name = Rambulance.layout_name, "application"
