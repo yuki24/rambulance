@@ -2,7 +2,6 @@
 
 source "https://rubygems.org"
 
-gem "byebug"
 gem "activesupport", "~> 3.2.0"
 gem "actionpack", "~> 3.2.0"
 gem "railties", "~> 3.2.0"
