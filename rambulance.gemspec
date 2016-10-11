@@ -22,12 +22,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency "actionpack"
   spec.add_dependency "railties"
 
-  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "tzinfo"
   spec.add_development_dependency "jbuilder"
-  spec.add_development_dependency "rspec"
-  spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "capybara"
   spec.add_development_dependency "appraisal"
 end

@@ -2,19 +2,20 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rails'
+require 'minitest/autorun'
 require 'action_controller/railtie'
 require 'action_view/railtie'
 require 'bundler/setup'
 Bundler.require
 
-require 'capybara/rspec'
 require 'fake_app/rails_app'
-require 'rspec/rails'
+require 'capybara/rails'
 
-# Requires supporting files with custom matchers and macros, etc,
-# in ./support/ and its subdirectories.
-# Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f }
+class ActionDispatch::IntegrationTest
+  include Capybara::DSL
 
-# RSpec.configure do |config|
-#
-# end
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
+end

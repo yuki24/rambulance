@@ -1,23 +1,20 @@
-# encoding: utf-8
 require "bundler/gem_tasks"
-require "rspec/core"
-require "rspec/core/rake_task"
+require "rake/testtask"
 
-RSpec::Core::RakeTask.new(:spec)
+Rake::TestTask.new('test:default') do |task|
+  task.libs << "test"
 
-task default: "spec:all"
+  task.test_files = Dir['test/**/*_test.rb']
+  task.verbose = true
+  task.warning = true
+end
 
-namespace :spec do
-  desc "Run Tests with the default exceptions app"
-  task :default do
-    sh "bundle exec rake -t spec"
-  end
-
+namespace :test do
   desc "Run Tests with a custom exceptions app"
   task :custom do
-    sh "bundle exec rake -t spec CUSTOM_EXCEPTIONS_APP=1"
+    sh "CUSTOM_EXCEPTIONS_APP=1 rake test:default"
   end
-
-  desc "Run tests with both of the default and custom apps"
-  task(:all).enhance(%w(default custom))
 end
+
+task(:test).enhance %w(test:default test:custom)
+task default: :test
