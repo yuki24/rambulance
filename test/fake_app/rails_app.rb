@@ -47,7 +47,11 @@ class ApplicationController < ActionController::Base
   end
 end
 class UsersController < ApplicationController
-  skip_filter :bad_filter, except: :show
+  if self.respond_to? :skip_before_action
+    skip_before_action :bad_filter, except: :show
+  else
+    skip_filter :bad_filter, except: :show
+  end
 
   def index
     raise CustomException
