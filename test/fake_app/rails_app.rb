@@ -34,7 +34,11 @@ end
 # controllers
 class ApplicationController < ActionController::Base
   append_view_path "spec/fake_app/views"
-  before_filter :bad_filter
+  if self.respond_to? :before_filter
+    before_filter :bad_filter
+  else
+    before_action :bad_filter
+  end
 
   private
 
