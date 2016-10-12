@@ -43,7 +43,11 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
 
   def get(path)
     without_layouts do
-      super(path, nil, "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json")
+      if Rails::VERSION::STRING >= '5.1.0'
+        super path, headers: { "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json" }
+      else
+        super path, nil, "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json"
+      end
     end
   end
 
