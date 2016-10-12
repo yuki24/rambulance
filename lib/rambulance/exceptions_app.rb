@@ -64,7 +64,7 @@ module Rambulance
     end
 
     def send_action(name, *args)
-      @_status          = env["PATH_INFO"][1..-1].to_i
+      @_status          = request.env["PATH_INFO"][1..-1].to_i
       @_response.status = @_status
       @_body            = { :status => @_status, :error => Rack::Utils::HTTP_STATUS_CODES.fetch(@_status.to_i, Rack::Utils::HTTP_STATUS_CODES[500]) }
 
