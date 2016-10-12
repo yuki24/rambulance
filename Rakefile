@@ -12,7 +12,7 @@ end
 namespace :test do
   desc "Run Tests with a custom exceptions app"
   task :custom do
-    sh "CUSTOM_EXCEPTIONS_APP=1 rake test:default"
+    sh "rake test:default CUSTOM_EXCEPTIONS_APP=1"
   end
 end
 
