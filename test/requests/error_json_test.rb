@@ -11,13 +11,8 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
   test 'returns the 500 json for RuntimeError' do
     get '/users/1.json'
 
-    if Rails::VERSION::MAJOR >= 5
-      assert_equal 204, response.status
-      assert_empty response.body
-    else
-      assert_equal 500, response.status
-      assert_equal "Something went wrong", json_response['message']
-    end
+    assert_equal 500, response.status
+    assert_equal "Something went wrong", json_response['message']
   end
 
   test 'returns the 404 json for CustomException' do

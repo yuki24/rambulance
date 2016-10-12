@@ -2,11 +2,9 @@ require 'test_helper'
 
 class ErrorPageTest < ActionDispatch::IntegrationTest
   test 'displays the 500 page for RuntimeError' do
-    expected_status_code = Rails::VERSION::MAJOR >= 5 ? 406 : 500
-
     visit '/users/1'
 
-    assert_equal expected_status_code, page.status_code 
+    assert_equal 500, page.status_code
     assert_includes page.body, "Error page"
     assert_includes page.body, "Something went wrong."
   end
@@ -73,11 +71,9 @@ end if !ENV["CUSTOM_EXCEPTIONS_APP"]
 
 class ErrorPageWithCustomExceptionsAppTest < ActionDispatch::IntegrationTest
   test 'displays 500 page for RuntimeError' do
-    expected_status_code = Rails::VERSION::MAJOR >= 5 ? 406 : 500
-
     visit '/users/1'
 
-    assert_equal expected_status_code, page.status_code
+    assert_equal 500, page.status_code
     assert_includes page.body, "Custom error page"
   end
 
