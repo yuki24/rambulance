@@ -6,11 +6,11 @@ Rambulance provides a simple and safe way to dynamically render error pages for 
 
 ### Simple and Safe
 
-Rambulance's exceptions app is simple, skinny and well-tested. It  inherits `ActionController::Base`, so it works fine even if your `ApplicationController` has an issue.
+Rambulance's exceptions app is simple, skinny and well-tested. It  inherits from `ActionController::Base`, so it works fine even if your `ApplicationController` has an issue.
 
 ### Flexible
 
-You have full control of what error page to display for a specific exception. It can also render json responses. It even provides a way to create a custom exceptions app.
+You have full control of showing a specific error page for a specific exception. It can also render json responses. It even provides a way to create a custom exceptions app.
 
 ### Easy installation and development
 
@@ -98,10 +98,10 @@ It'll generate your own custom exceptions app. You can use whatever techniques y
 
 ## Supported Versions
 
-* Ruby 1.9.3, 2.0.0, 2.1, 2.2, JRuby 1.7.19, JRuby head, Rubinius 2.4.1 and 2.5.3
-* Rails 3.2, 4.0, 4.1, 4.2 and edge
+* Ruby 1.9.3, 2.0.0, 2.1, 2.2, 2.3, JRuby 1.7.19, JRuby head, Rubinius 2.4.1 and 2.5.3
+* Rails 3.2, 4.0, 4.1, 4.2, 5.0 and edge
 
-Rambulance doesn't work with Rails 3.1 and below since they don't provide any way to use a custom exceptions app.
+Rambulance doesn't work with Rails 3.1 and below since they don't provide a way to use a custom exceptions app.
 
 ## Contributing
 
