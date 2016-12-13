@@ -3,6 +3,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rails'
 require 'minitest/autorun'
+require 'minitest/pride'
 require 'action_controller/railtie'
 require 'action_view/railtie'
 require 'bundler/setup'
