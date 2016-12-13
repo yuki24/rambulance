@@ -4,7 +4,6 @@ cache:    bundler
 sudo:     false
 
 rvm:
-  - 1.9.3
   - 2.0.0
   - 2.1
   - 2.2.5
@@ -23,10 +22,6 @@ gemfile:
 
 matrix:
   exclude:
-    - rvm: 1.9.3
-      gemfile: gemfiles/rails_50.gemfile
-    - rvm: 1.9.3
-      gemfile: gemfiles/rails_edge.gemfile
     - rvm: 2.0.0
       gemfile: gemfiles/rails_50.gemfile
     - rvm: 2.0.0
