@@ -98,7 +98,7 @@ It'll generate your own custom exceptions app. You can use whatever techniques y
 
 ## Supported Versions
 
-* Ruby 1.9.3, 2.0.0, 2.1, 2.2, 2.3, JRuby 1.7.19, JRuby head, Rubinius 2.4.1 and 2.5.3
+* Ruby 2.0.0, 2.1, 2.2, 2.3, JRuby 1.7.19, JRuby head, Rubinius 2.4.1 and 2.5.3
 * Rails 3.2, 4.0, 4.1, 4.2, 5.0 and edge
 
 Rambulance doesn't work with Rails 3.1 and below since they don't provide a way to use a custom exceptions app.
