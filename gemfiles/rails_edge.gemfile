@@ -8,6 +8,7 @@ git "git://github.com/rails/rails.git" do
   gem "railties"
 end
 
+gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8' if RUBY_VERSION >= "2.4.0"
 gem "minitest", "~> 5.3.4"
 
 gemspec :path => "../"

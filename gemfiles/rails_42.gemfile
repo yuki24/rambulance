@@ -7,5 +7,6 @@ gem "actionpack", "~> 4.2.0"
 gem "railties", "~> 4.2.0"
 gem "minitest", "~> 5.3.4"
 gem 'nokogiri', '1.6.8.1' if RUBY_VERSION == "2.0.0"
+gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8' if RUBY_VERSION >= "2.4.0"
 
 gemspec :path => "../"
