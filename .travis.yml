@@ -46,4 +46,3 @@ matrix:
     - rvm: 2.4.0
     - gemfile: gemfiles/rails_edge.gemfile
     - gemfile: gemfiles/rails_32.gem
-  fast_finish: true
