@@ -5,9 +5,12 @@ class ExceptionsApp < Rambulance::ExceptionsApp
   def forbidden
   end
 
+  def internal_server_error
+  end
+
   def not_found
   end
 
-  def internal_server_error
+  def unprocessable_entity
   end
 end
