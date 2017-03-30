@@ -43,6 +43,10 @@ matrix:
       gemfile: gemfiles/rails_41.gemfile
     - rvm: ruby-head
       gemfile: gemfiles/rails_32.gemfile
+    - rvm: ruby-head
+      gemfile: gemfiles/rails_40.gemfile
+    - rvm: ruby-head
+      gemfile: gemfiles/rails_41.gemfile
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-9.1.8.0
