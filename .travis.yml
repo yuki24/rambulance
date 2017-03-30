@@ -7,10 +7,10 @@ rvm:
   - 2.0.0
   - 2.1
   - 2.2.6
-  - 2.3.3
-  - 2.4.0
+  - 2.3.4
+  - 2.4.1
   - ruby-head
-  - jruby-9.1.7.0
+  - jruby-9.1.8.0
   - jruby-head
 
 gemfile:
@@ -33,16 +33,16 @@ matrix:
       gemfile: gemfiles/rails_edge.gemfile
     - rvm: 2.2.6
       gemfile: gemfiles/rails_32.gemfile
-    - rvm: 2.3.3
+    - rvm: 2.3.4
       gemfile: gemfiles/rails_32.gemfile
-    - rvm: 2.4.0
+    - rvm: 2.4.1
       gemfile: gemfiles/rails_32.gemfile
     - rvm: ruby-head
       gemfile: gemfiles/rails_32.gemfile
   allow_failures:
     - rvm: ruby-head
-    - rvm: jruby-9.1.7.0
+    - rvm: jruby-9.1.8.0
     - rvm: jruby-head
-    - rvm: 2.4.0
+    - rvm: 2.4.1
     - gemfile: gemfiles/rails_edge.gemfile
     - gemfile: gemfiles/rails_32.gem
