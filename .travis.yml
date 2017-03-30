@@ -51,6 +51,5 @@ matrix:
     - rvm: ruby-head
     - rvm: jruby-9.1.8.0
     - rvm: jruby-head
-    - rvm: 2.4.1
     - gemfile: gemfiles/rails_edge.gemfile
     - gemfile: gemfiles/rails_32.gem
