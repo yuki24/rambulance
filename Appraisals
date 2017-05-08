@@ -12,7 +12,6 @@ appraise "rails_40" do
   gem "railties", "~> 4.0.0"
   gem "test-unit" if RUBY_VERSION >= "2.2.0"
   gem 'nokogiri', '1.6.8.1' if RUBY_VERSION == "2.0.0"
-  gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8' if RUBY_VERSION >= "2.4.0"
 end
 
 appraise "rails_41" do
@@ -20,7 +19,6 @@ appraise "rails_41" do
   gem "actionpack", "~> 4.1.0"
   gem "railties", "~> 4.1.0"
   gem 'nokogiri', '1.6.8.1' if RUBY_VERSION == "2.0.0"
-  gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8' if RUBY_VERSION >= "2.4.0"
 end
 
 appraise "rails_42" do
@@ -29,7 +27,6 @@ appraise "rails_42" do
   gem "railties", "~> 4.2.0"
   gem 'minitest', '~> 5.3.4'
   gem 'nokogiri', '1.6.8.1' if RUBY_VERSION == "2.0.0"
-  gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8' if RUBY_VERSION >= "2.4.0"
 end
 
 appraise "rails_50" do
@@ -37,7 +34,6 @@ appraise "rails_50" do
   gem "actionpack", "~> 5.0.0"
   gem "railties", "~> 5.0.0"
   gem 'minitest', '~> 5.3.4'
-  gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8' if RUBY_VERSION >= "2.4.0"
 end
 
 appraise "rails_edge" do
@@ -47,6 +43,5 @@ appraise "rails_edge" do
     gem "railties"
   end
 
-  gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8' if RUBY_VERSION >= "2.4.0"
   gem 'minitest', '~> 5.3.4'
 end

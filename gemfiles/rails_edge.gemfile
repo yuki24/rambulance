@@ -3,12 +3,11 @@
 source "https://rubygems.org"
 
 git "git://github.com/rails/rails.git" do
-  gem "activesupport", :require => "active_support"
-  gem "actionpack", :require => "action_pack"
+  gem "activesupport", require: "active_support"
+  gem "actionpack", require: "action_pack"
   gem "railties"
 end
 
-gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8' if RUBY_VERSION >= "2.4.0"
 gem "minitest", "~> 5.3.4"
 
-gemspec :path => "../"
+gemspec path: "../"
