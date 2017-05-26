@@ -10,7 +10,7 @@ rvm:
   - 2.3.4
   - 2.4.1
   - ruby-head
-  - jruby-9.1.8.0
+  - jruby-9.1.10.0
   - jruby-head
 
 gemfile:
@@ -54,7 +54,7 @@ matrix:
       gemfile: gemfiles/rails_41.gemfile
   allow_failures:
     - rvm: ruby-head
-    - rvm: jruby-9.1.8.0
+    - rvm: jruby-9.1.10.0
     - rvm: jruby-head
     - gemfile: gemfiles/rails_edge.gemfile
     - gemfile: gemfiles/rails_32.gem
