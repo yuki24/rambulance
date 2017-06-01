@@ -36,7 +36,10 @@ module Rambulance
     ERROR_HTTP_STATUSES.values.each do |status_in_words|
       eval <<-ACTION
         def #{status_in_words}
-          render(template_exists?(error_path) ? error_path : error_path(:internal_server_error))
+          respond_to do |format|
+            format.html { render(template_exists?(error_path) ? error_path : error_path(:internal_server_error)) }
+            format.all { render(template_exists?(error_path) ? error_path : error_path(:internal_server_error), :layout => nil) }
+          end
         end
       ACTION
     end
