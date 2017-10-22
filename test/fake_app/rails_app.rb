@@ -1,20 +1,19 @@
 require 'jbuilder'
 
 # config
-app = Class.new(Rails::Application)
-app.config.secret_token = '964ab2f0fbbb68bc36f3cc487ca296bb8555fac50627924024c245a1599e5265'
-app.config.session_store :cookie_store, :key => '_myapp_session'
-app.config.active_support.deprecation = :log
-app.config.eager_load = false
-
-# Rais.root
-app.config.root = File.dirname(__FILE__)
-app.config.autoload_paths += ["#{app.config.root}/lib"] if ENV["CUSTOM_EXCEPTIONS_APP"]
+class TestApp < Rails::Application
+  config.secret_token = '964ab2f0fbbb68bc36f3cc487ca296bb8555fac50627924024c245a1599e5265'
+  config.session_store :cookie_store, :key => '_myapp_session'
+  config.active_support.deprecation = :log
+  config.eager_load = false
+  config.root = File.dirname(__FILE__)
+  config.autoload_paths += ["#{config.root}/lib"] if ENV["CUSTOM_EXCEPTIONS_APP"]
+end
 Rails.backtrace_cleaner.remove_silencers!
-app.initialize!
+Rails.application.initialize!
 
 # routes
-app.routes.draw do
+Rails.application.routes.draw do
   resources :users
 end
 
