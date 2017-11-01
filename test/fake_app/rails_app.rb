@@ -62,7 +62,13 @@ class UsersController < ApplicationController
     raise ActionController::InvalidAuthenticityToken
   end
 
-  def create; end
+  def create
+    render text: 'created.', status: 201
+  end
+
+  def update
+    render text: 'updated.', status: 201
+  end
 
   def edit
     raise ForbiddenException

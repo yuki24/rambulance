@@ -41,6 +41,51 @@ class ErrorPageTest < ActionDispatch::IntegrationTest
     assert_includes page.body, "Page not found."
   end
 
+  if Rails.version < '4.2.0'
+    # Versions eariler than 4.2 use `Rack::MethodOverride` that calls the 
+    # request#POST method. It is configured to be called before the request
+    # reaches Rails' ShowException, and it's impossible to capture from it.
+    #
+    # Since there is no good solution for us to fix it, I will consider it
+    # to be a "won't fix" edge case and leave a test case here.
+    test 'raises ArgumentError when posting malformed body' do
+      assert_raises ArgumentError do
+        page.driver.post '/users', 'email=abcd%%72900'
+      end
+    end
+  elsif Rails.version.start_with?('4.2')
+    test 'displays the 201 page' do
+      page.driver.post '/users', 'email=abcd%%72900'
+
+      assert_equal 201, page.status_code
+      assert_includes page.body, "created."
+    end
+  else
+    test 'displays the 400 page for POST request with malformed body' do
+      page.driver.post '/users', 'email=abcd%%72900'
+
+      assert_equal 400, page.status_code
+      assert_includes page.body, "Error page"
+      assert_includes page.body, "Bad request."
+    end
+
+    test 'displays the 400 page for PUT request with malformed body' do
+      page.driver.put '/users/1', 'email=abcd%%72900'
+
+      assert_equal 400, page.status_code
+      assert_includes page.body, "Error page"
+      assert_includes page.body, "Bad request."
+    end
+
+    test 'displays the 404 page for request to non-existing page with malformed body' do
+      page.driver.post '/doesnt_exist', 'email=abcd%%72900'
+
+      assert_equal 404, page.status_code
+      assert_includes page.body, "Error page"
+      assert_includes page.body, "Page not found."
+    end
+  end
+
   test 'displays the 403 page for ForbiddenException' do
     visit '/users/1/edit'
 

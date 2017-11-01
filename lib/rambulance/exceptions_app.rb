@@ -60,6 +60,12 @@ module Rambulance
         request.env["MALFORMED_QUERY_STRING"], request.env["QUERY_STRING"] = request.env["QUERY_STRING"], ""
       end
 
+      begin
+        request.POST
+      rescue BAD_REQUEST_EXCEPTION, ArgumentError
+        request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
+      end
+
       super
     end
 
