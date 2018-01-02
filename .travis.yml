@@ -3,6 +3,8 @@ script:   bundle exec rake
 cache:    bundler
 sudo:     false
 
+before_install: gem install bundler -v 1.15.4
+
 rvm:
   - 2.0.0
   - 2.1
