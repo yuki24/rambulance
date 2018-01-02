@@ -51,6 +51,12 @@ matrix:
       gemfile: gemfiles/rails_40.gemfile
     - rvm: 2.4.3
       gemfile: gemfiles/rails_41.gemfile
+    - rvm: 2.5.0
+      gemfile: gemfiles/rails_32.gemfile
+    - rvm: 2.5.0
+      gemfile: gemfiles/rails_40.gemfile
+    - rvm: 2.5.0
+      gemfile: gemfiles/rails_41.gemfile
     - rvm: ruby-head
       gemfile: gemfiles/rails_32.gemfile
     - rvm: ruby-head
