@@ -1,3 +1,21 @@
+## [v0.5.0](https://github.com/yuki24/rambulance/tree/v0.5.0)
+
+_<sup>released at 2018-01-02 21:36:02 UTC</sup>_
+
+#### New features
+
+- Add support for Ruby 2.5.0
+- Add support for Rails 5.1
+
+#### Breaking changes & deprecations
+
+- Drop support for Ruby 1.9.3
+- Drop support for Haml and Slim templates
+
+#### Bug fixes
+
+- Fixes a bug where the exceptions app fails to show an error page properly when a malformed body is posted ([<tt>474b6b3</tt>](https://github.com/yuki24/rambulance/commit/474b6b329e5590db3c0a7e33c795b18c00812729), [#40](https://github.com/yuki24/rambulance/issues/40), [@jasim](https://github.com/jasim))
+
 ## [v0.4.0](https://github.com/yuki24/rambulance/tree/v0.4.0)
 
 _<sup>released at 2016-10-12 02:25:55 UTC</sup>_
