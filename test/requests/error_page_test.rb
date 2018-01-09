@@ -17,6 +17,16 @@ class ErrorPageTest < ActionDispatch::IntegrationTest
     assert_includes page.body, "Page not found."
   end
 
+  test 'displays the 406 page for unknown format' do
+    visit '/projects'
+
+    assert_equal 200, page.status_code # Just to make sure normal html request succeeds
+
+    visit '/projects.txt'
+
+    assert_equal 406, page.status_code
+  end
+
   test 'displays the 404 page for ActionController::RoutingError' do
     visit '/doesnt_exist'
 

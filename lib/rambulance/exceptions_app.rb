@@ -66,6 +66,9 @@ module Rambulance
         request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
       end
 
+      # The #format method needs to be called after the sanitization above.
+      request.formats = request.formats.map(&:ref) << :html
+
       super
     end
 

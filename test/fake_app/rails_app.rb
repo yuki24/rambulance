@@ -15,6 +15,7 @@ Rails.application.initialize!
 # routes
 Rails.application.routes.draw do
   resources :users
+  resources :projects, only: :index
 end
 
 # custom exception class
@@ -73,4 +74,13 @@ class UsersController < ApplicationController
   def edit
     raise ForbiddenException
   end
+end
+class ProjectsController < ApplicationController
+  if self.respond_to? :skip_before_action
+    skip_before_action :bad_filter
+  else
+    skip_filter :bad_filter
+  end
+
+  def index; end
 end
