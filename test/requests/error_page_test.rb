@@ -1,6 +1,20 @@
 require 'test_helper'
 
 class ErrorPageTest < ActionDispatch::IntegrationTest
+  test 'displays the corresponding error page if /rambulance/status_in_words is requested in development' do
+    visit '/rambulance/forbidden'
+
+    assert_equal 403, page.status_code
+    assert_includes page.body, "Error page"
+    assert_includes page.body, "Forbidden."
+
+    visit '/rambulance/internal_server_error'
+
+    assert_equal 500, page.status_code
+    assert_includes page.body, "Error page"
+    assert_includes page.body, "Something went wrong."
+  end
+
   test 'displays the 500 page for RuntimeError' do
     visit '/users/1'
 
