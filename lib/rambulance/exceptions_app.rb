@@ -34,7 +34,7 @@ module Rambulance
     end if ActionPack::VERSION::STRING >= "4.2.0"
 
     ERROR_HTTP_STATUSES.values.each do |status_in_words|
-      eval <<-ACTION
+      eval <<-ACTION, nil, __FILE__, __LINE__ + 1
         def #{status_in_words}
           render(template_exists?(error_path) ? error_path : error_path(:internal_server_error))
         end
