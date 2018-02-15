@@ -66,7 +66,7 @@ module Rambulance
       end
 
       # The #format method needs to be called after the sanitization above.
-      request.formats = request.formats.map(&:ref) << :html
+      request.formats << Mime::Type.register("text/html", :html)
 
       super
     end
