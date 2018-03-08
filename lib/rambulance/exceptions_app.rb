@@ -71,6 +71,7 @@ module Rambulance
       if request.respond_to?(:formats)
         request.formats << Mime::Type.lookup('text/plain')
       elsif request.respond_to?(:format) && status == 406
+        # TODO: Remove this conditional when dropping support for Rails 3.2
         request.format = Mime::Type.lookup('text/plain')
       end
 
