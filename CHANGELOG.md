@@ -1,3 +1,17 @@
+## [v0.6.0](https://github.com/yuki24/rambulance/tree/v0.6.0)
+
+_<sup>released at 2018-03-08 18:36:16 UTC</sup>_
+
+#### New features
+
+- Add support for Rails 5.2
+- Add a test helper method `#with_exceptions_app` for easier testing ([<tt>f5c16b9</tt>](https://github.com/yuki24/rambulance/commit/f5c16b90ecf5eb4903faa30d760bf5863441e9c5), [#27](https://github.com/yuki24/rambulance/pull/27), [@kbaba1001](https://github.com/kbaba1001))
+
+#### Bug fixes
+
+- Fixed a bug where an `ActionController::UnknownFormat` error could cause a number of issues ([<tt>1b824e6</tt>](https://github.com/yuki24/rambulance/commit/1b824e6c170479ed90e24df1680dd2dec7c98160), [#41](https://github.com/yuki24/rambulance/issues/41), [#42](https://github.com/yuki24/rambulance/pull/42), [@willnet](https://github.com/willnet), [@joker-777](https://github.com/joker-777))
+- Fixed a bug where the methods on the `ExceptionApp` weren't easily inspectable ([<tt>6b4c834</tt>](https://github.com/yuki24/rambulance/commit/6b4c834bb0b8e81f619d9f598310ce68f4f9c66b))
+
 ## [v0.5.0](https://github.com/yuki24/rambulance/tree/v0.5.0)
 
 _<sup>released at 2018-01-02 21:36:02 UTC</sup>_
