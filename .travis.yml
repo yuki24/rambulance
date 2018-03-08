@@ -70,11 +70,11 @@ matrix:
       gemfile: gemfiles/rails_40.gemfile
     - rvm: ruby-head
       gemfile: gemfiles/rails_41.gemfile
-    - rvm: jruby-9.1.15.0
+    - rvm: jruby-9.1.16.0
       gemfile: gemfiles/rails_32.gemfile
-    - rvm: jruby-9.1.15.0
+    - rvm: jruby-9.1.16.0
       gemfile: gemfiles/rails_40.gemfile
-    - rvm: jruby-9.1.15.0
+    - rvm: jruby-9.1.16.0
       gemfile: gemfiles/rails_41.gemfile
     - rvm: jruby-head
       gemfile: gemfiles/rails_32.gemfile
