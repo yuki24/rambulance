@@ -42,6 +42,12 @@ appraise "rails_51" do
   gem "railties", "~> 5.1.0"
 end
 
+appraise "rails_52" do
+  gem "activesupport", "~> 5.2.0.rc1"
+  gem "actionpack", "~> 5.2.0.rc1"
+  gem "railties", "~> 5.2.0.rc1"
+end
+
 appraise "rails_edge" do
   git 'git://github.com/rails/rails.git' do
     gem "activesupport", require: 'active_support'
