@@ -2,8 +2,6 @@ require 'test_helper'
 
 class ErrorPageTest < ActionDispatch::IntegrationTest
   test 'displays the corresponding error page if /rambulance/status_in_words is requested in development' do
-    skip
-
     visit '/rambulance/forbidden'
 
     assert_equal 403, page.status_code
