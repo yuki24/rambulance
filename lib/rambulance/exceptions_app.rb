@@ -12,12 +12,6 @@ module Rambulance
   class ExceptionsApp < ActionController::Base
     layout :layout_name
 
-    BAD_REQUEST_EXCEPTION = begin
-                              ActionController::BadRequest
-                            rescue NameError
-                              TypeError # Rails 3.2 doesn't know about ActionController::BadRequest
-                            end
-
     def self.call(env)
       exception       = env["action_dispatch.exception"]
       status_in_words = if exception
@@ -33,7 +27,7 @@ module Rambulance
 
     def self.local_prefixes
       [Rambulance.view_path]
-    end if ActionPack::VERSION::STRING >= "4.2.0"
+    end
 
     ERROR_HTTP_STATUSES.values.each do |status_in_words|
       eval <<-ACTION, nil, __FILE__, __LINE__ + 1
@@ -57,23 +51,18 @@ module Rambulance
     def process_action(*)
       begin
         request.GET
-      rescue BAD_REQUEST_EXCEPTION
+      rescue ActionController::BadRequest
         request.env["MALFORMED_QUERY_STRING"], request.env["QUERY_STRING"] = request.env["QUERY_STRING"], ""
       end
 
       begin
         request.POST
-      rescue BAD_REQUEST_EXCEPTION, ArgumentError
+      rescue ActionController::BadRequest
         request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
       end
 
       # The #formats method needs to be called after the sanitization above.
-      if request.respond_to?(:formats)
-        request.formats << Mime::Type.lookup('text/plain')
-      elsif request.respond_to?(:format) && status == 406
-        # TODO: Remove this conditional when dropping support for Rails 3.2
-        request.format = Mime::Type.lookup('text/plain')
-      end
+      request.formats << Mime::Type.lookup('text/plain')
 
       super
     end
