@@ -1,6 +1,9 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
+# RAILS_ENV needs to be set to development to mount the error page debug view
+ENV['RAILS_ENV'] ||= 'development'
+
 require 'rails'
 require 'minitest/autorun'
 require 'minitest/pride'
