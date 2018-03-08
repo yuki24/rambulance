@@ -8,9 +8,6 @@ before_install:
   - gem pristine bundler
 
 rvm:
-  - 2.0.0
-  - 2.1
-  - 2.2.9
   - 2.3.6
   - 2.4.3
   - 2.5.0
@@ -19,9 +16,6 @@ rvm:
   - jruby-head
 
 gemfile:
-  - gemfiles/rails_32.gemfile
-  - gemfiles/rails_40.gemfile
-  - gemfiles/rails_41.gemfile
   - gemfiles/rails_42.gemfile
   - gemfiles/rails_50.gemfile
   - gemfiles/rails_51.gemfile
@@ -30,65 +24,10 @@ gemfile:
 
 matrix:
   exclude:
-    - rvm: 2.0.0
-      gemfile: gemfiles/rails_50.gemfile
-    - rvm: 2.0.0
-      gemfile: gemfiles/rails_51.gemfile
-    - rvm: 2.0.0
-      gemfile: gemfiles/rails_52.gemfile
-    - rvm: 2.0.0
-      gemfile: gemfiles/rails_edge.gemfile
-    - rvm: 2.1
-      gemfile: gemfiles/rails_50.gemfile
-    - rvm: 2.1
-      gemfile: gemfiles/rails_51.gemfile
-    - rvm: 2.1
-      gemfile: gemfiles/rails_52.gemfile
-    - rvm: 2.1
-      gemfile: gemfiles/rails_edge.gemfile
-    - rvm: 2.2.9
-      gemfile: gemfiles/rails_32.gemfile
-    - rvm: 2.2.9
-      gemfile: gemfiles/rails_51.gemfile
-    - rvm: 2.2.9
-      gemfile: gemfiles/rails_edge.gemfile
-    - rvm: 2.3.6
-      gemfile: gemfiles/rails_32.gemfile
     - rvm: 2.3.6
       gemfile: gemfiles/rails_edge.gemfile
-    - rvm: 2.4.3
-      gemfile: gemfiles/rails_32.gemfile
-    - rvm: 2.4.3
-      gemfile: gemfiles/rails_40.gemfile
-    - rvm: 2.4.3
-      gemfile: gemfiles/rails_41.gemfile
-    - rvm: 2.5.0
-      gemfile: gemfiles/rails_32.gemfile
-    - rvm: 2.5.0
-      gemfile: gemfiles/rails_40.gemfile
-    - rvm: 2.5.0
-      gemfile: gemfiles/rails_41.gemfile
-    - rvm: ruby-head
-      gemfile: gemfiles/rails_32.gemfile
-    - rvm: ruby-head
-      gemfile: gemfiles/rails_40.gemfile
-    - rvm: ruby-head
-      gemfile: gemfiles/rails_41.gemfile
-    - rvm: jruby-9.1.16.0
-      gemfile: gemfiles/rails_32.gemfile
-    - rvm: jruby-9.1.16.0
-      gemfile: gemfiles/rails_40.gemfile
-    - rvm: jruby-9.1.16.0
-      gemfile: gemfiles/rails_41.gemfile
-    - rvm: jruby-head
-      gemfile: gemfiles/rails_32.gemfile
-    - rvm: jruby-head
-      gemfile: gemfiles/rails_40.gemfile
-    - rvm: jruby-head
-      gemfile: gemfiles/rails_41.gemfile
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-9.1.16.0
     - rvm: jruby-head
     - gemfile: gemfiles/rails_edge.gemfile
-    - gemfile: gemfiles/rails_32.gem
