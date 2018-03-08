@@ -50,8 +50,12 @@ matrix:
       gemfile: gemfiles/rails_32.gemfile
     - rvm: 2.2.9
       gemfile: gemfiles/rails_51.gemfile
+    - rvm: 2.2.9
+      gemfile: gemfiles/rails_edge.gemfile
     - rvm: 2.3.6
       gemfile: gemfiles/rails_32.gemfile
+    - rvm: 2.3.6
+      gemfile: gemfiles/rails_edge.gemfile
     - rvm: 2.4.3
       gemfile: gemfiles/rails_32.gemfile
     - rvm: 2.4.3
