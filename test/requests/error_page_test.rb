@@ -38,9 +38,14 @@ class ErrorPageTest < ActionDispatch::IntegrationTest
 
     assert_equal 200, page.status_code # Just to make sure normal html request succeeds
 
-    visit '/projects.txt'
+    visit '/projects.jpeg'
 
-    assert_equal 406, page.status_code
+    if Rails.version < '5.0.0'
+      assert_equal 500, page.status_code
+    else
+      assert_equal 406, page.status_code
+      assert_includes page.body, "The requested content type is not acceptable."
+    end
   end
 
   test 'displays the 404 page for ActionController::RoutingError' do

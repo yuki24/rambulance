@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rambulance
   ERROR_HTTP_STATUSES = Rack::Utils::SYMBOL_TO_STATUS_CODE.select do |status_in_words, http_status|
     # Exclude http statuses that:
@@ -65,8 +67,12 @@ module Rambulance
         request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
       end
 
-      # The #format method needs to be called after the sanitization above.
-      request.formats = request.formats.map(&:ref) << :html
+      # The #formats method needs to be called after the sanitization above.
+      if request.respond_to?(:formats)
+        request.formats << Mime::Type.lookup('text/plain')
+      elsif request.respond_to?(:format) && status == 406
+        request.format = Mime::Type.lookup('text/plain')
+      end
 
       super
     end

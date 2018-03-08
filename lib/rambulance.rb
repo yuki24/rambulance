@@ -1,5 +1,6 @@
 require "rambulance/version"
 require "rambulance/railtie"
+require "rambulance/engine"
 
 module Rambulance
 
