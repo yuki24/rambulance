@@ -24,7 +24,7 @@ _<sup>released at 2018-01-02 21:36:02 UTC</sup>_
 #### Breaking changes & deprecations
 
 - Drop support for Ruby 1.9.3
-- Drop support for Haml and Slim templates
+- Drop support for generating Haml and Slim templates on `rails g rambulance:install`
 
 #### Bug fixes
 
