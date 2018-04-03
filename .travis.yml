@@ -8,9 +8,9 @@ before_install:
   - gem pristine bundler
 
 rvm:
-  - 2.3.6
-  - 2.4.3
-  - 2.5.0
+  - 2.3.7
+  - 2.4.4
+  - 2.5.1
   - ruby-head
   - jruby-9.1.16.0
   - jruby-head
@@ -24,7 +24,7 @@ gemfile:
 
 matrix:
   exclude:
-    - rvm: 2.3.6
+    - rvm: 2.3.7
       gemfile: gemfiles/rails_edge.gemfile
   allow_failures:
     - rvm: ruby-head
