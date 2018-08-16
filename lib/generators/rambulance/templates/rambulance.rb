@@ -22,12 +22,12 @@ Rambulance.setup do |config|
   }
 
   # The template name for the layout of the error pages. The default value is
-  # 'error'. For exmaple, if this value is set to "error_page", Rambulance uses
+  # 'error'. For example, if this value is set to "error_page", Rambulance uses
   # 'app/views/layout/error_page.html.erb' as a layout for all the error pages.
   config.layout_name = "error"
 
   # The directry name to organize error page templates. The default value is
-  # 'errors'. For exmaple, if this value is set to "error_pages", Rambulance
+  # 'errors'. For example, if this value is set to "error_pages", Rambulance
   # uses e.g. 'app/views/error_pages/not_found.html.erb'.
   config.view_path = "errors"
 
