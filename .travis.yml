@@ -3,7 +3,6 @@ cache:    bundler
 sudo:     false
 
 script:
-  - bundle exec danger
   - bundle exec rake
 
 before_install:
@@ -26,6 +25,11 @@ gemfile:
   - gemfiles/rails_edge.gemfile
 
 matrix:
+  include:
+    - rvm: 2.5.1
+      gemfile: Gemfile
+      before_script:
+        - bundle exec danger
   exclude:
     - rvm: 2.3.7
       gemfile: gemfiles/rails_edge.gemfile
