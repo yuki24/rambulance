@@ -1,7 +1,10 @@
 language: ruby
-script:   bundle exec rake
 cache:    bundler
 sudo:     false
+
+script:
+  - bundle exec danger
+  - bundle exec rake
 
 before_install:
   - gem update --system
