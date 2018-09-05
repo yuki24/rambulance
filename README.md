@@ -2,6 +2,8 @@
 
 Rambulance provides a simple and safe way to dynamically render error pages for Rails apps.
 
+Hi!
+
 ## Features
 
 ### Simple and Safe
