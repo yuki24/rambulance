@@ -13,7 +13,19 @@ fail("fdescribe left in tests") if `grep -r fdescribe test/ `.length > 1
 fail("fit left in tests") if `grep -r fit test/ `.length > 1
 
 # Most spellcheckers think my name has a typo
-prose.ignored_words = ["yuki"]
+prose.ignored_words = %w(
+  Rambulance
+  Yuki
+  Nishijima
+  Gemfile
+  JSON
+  haml
+  Rspec
+  Minitest
+  JRuby
+  LICENSE.txt
+  9.1.16.0
+)
 
 # Runs a linter with all styles, on modified and added markdown files in this PR
 prose.check_spelling
