@@ -94,7 +94,7 @@ $ rails g rambulance:exceptions_app
 
 It'll generate your own custom exceptions app. You can use whatever techniques you use in controllers like `before_filter` and `flash[:notice] = "message..."` since it's a grandchild of `ActionController::Base`!
 
-**Keep in mind that you shouldn't do too many things because something already went wrong with your application!**
+**Note that customizing the exceptions app is strongly discouraged as there would be no guard against bugs that occur in the exceptions app.**
 
 ## Testing
 
