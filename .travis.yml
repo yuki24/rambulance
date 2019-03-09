@@ -29,6 +29,8 @@ matrix:
   exclude:
     - rvm: 2.3.8
       gemfile: gemfiles/rails_edge.gemfile
+    - rvm: 2.4.5
+      gemfile: gemfiles/rails_edge.gemfile
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-9.2.5.0
