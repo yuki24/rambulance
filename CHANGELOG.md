@@ -1,3 +1,21 @@
+## [v1.0.0](https://github.com/yuki24/rambulance/tree/v1.0.0)
+
+_<sup>released at 2019-06-03 05:01:14 UTC</sup>_
+
+#### Features
+
+- Add support for Ruby 2.6
+- Add support for Rails 6.0
+
+#### Bug fixes
+
+- Fixes a bug where POST requests cause the exceptions app to throw an `ActionController::InvalidAuthenticityToken` error on Rails 5.2 ([<tt>d68d677</tt>](https://github.com/yuki24/rambulance/commit/d68d677de75059fa09f70e37c97f4bae95885c53), [#48](https://github.com/yuki24/rambulance/issues/48), [@adrianhuna](https://github.com/adrianhuna))
+
+#### Breaking Changes
+
+- Drop support for Ruby \<= 2.2
+- Drop support for Rails \<= 4.1
+
 ## [v0.6.0](https://github.com/yuki24/rambulance/tree/v0.6.0)
 
 _<sup>released at 2018-03-08 18:36:16 UTC</sup>_
