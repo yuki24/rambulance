@@ -1,15 +1,18 @@
 module Rambulance
   class Railtie < Rails::Railtie
     initializer 'rambulance', after: :prepend_helpers_path do |app|
-      require "rambulance/exceptions_app"
+      ActiveSupport.on_load(:action_controller) do
+        require "rambulance/exceptions_app"
+      end
 
-      app.config.exceptions_app =
+      app.config.exceptions_app = ->(env) {
         begin
           ActiveSupport::Dependencies.load_missing_constant(Object, :ExceptionsApp)
-          ->(env){ ::ExceptionsApp.call(env) }
+          ::ExceptionsApp.call(env)
         rescue NameError
-          ::Rambulance::ExceptionsApp
+          ::Rambulance::ExceptionsApp.call(env)
         end
+      }
 
       ActiveSupport.on_load(:after_initialize) do
         Rails.application.routes.append do

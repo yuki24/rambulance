@@ -29,6 +29,13 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
     assert_equal "Page not found", json_response['message']
   end
 
+  test 'renders an error page on a POST request' do
+    post '/projects.json'
+
+    assert_equal 500, response.status
+    assert_equal "Something went wrong", json_response['message']
+  end
+
   private
 
   def without_layouts

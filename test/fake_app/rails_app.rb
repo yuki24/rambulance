@@ -8,6 +8,10 @@ class TestApp < Rails::Application
   config.eager_load = false
   config.root = File.dirname(__FILE__)
   config.autoload_paths += ["#{config.root}/lib"] if ENV["CUSTOM_EXCEPTIONS_APP"]
+
+  if Rails::VERSION::STRING >= "5.2"
+    config.action_controller.default_protect_from_forgery = true
+  end
 end
 Rails.backtrace_cleaner.remove_silencers!
 Rails.application.initialize!
@@ -15,7 +19,7 @@ Rails.application.initialize!
 # routes
 Rails.application.routes.draw do
   resources :users
-  resources :projects, only: :index
+  resources :projects, only: [:index, :create]
 end
 
 # custom exception class
@@ -76,11 +80,16 @@ class UsersController < ApplicationController
   end
 end
 class ProjectsController < ApplicationController
+  if self.respond_to?(:skip_forgery_protection)
+    skip_forgery_protection
+  end
+
   if self.respond_to? :skip_before_action
-    skip_before_action :bad_filter
+    skip_before_action :bad_filter, except: :create
   else
-    skip_filter :bad_filter
+    skip_filter :bad_filter, except: :create
   end
 
   def index; end
+  def create; end
 end

@@ -12,6 +12,10 @@ module Rambulance
   class ExceptionsApp < ActionController::Base
     layout :layout_name
 
+    if self.respond_to?(:skip_forgery_protection)
+      skip_forgery_protection
+    end
+
     def self.call(env)
       exception       = env["action_dispatch.exception"]
       status_in_words = if exception
