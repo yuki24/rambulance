@@ -43,9 +43,9 @@ appraise "rails_51" do
 end
 
 appraise "rails_52" do
-  gem "activesupport", "~> 5.2.0.rc1"
-  gem "actionpack", "~> 5.2.0.rc1"
-  gem "railties", "~> 5.2.0.rc1"
+  gem "activesupport", "~> 5.2.0"
+  gem "actionpack", "~> 5.2.0"
+  gem "railties", "~> 5.2.0"
 end
 
 appraise "rails_edge" do
