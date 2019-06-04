@@ -12,8 +12,10 @@ module Rambulance
   class ExceptionsApp < ActionController::Base
     layout :layout_name
 
-    if self.respond_to?(:skip_forgery_protection)
+    begin
       skip_forgery_protection
+    rescue
+      # ignore errors from #skip_forgery_protection since older Rails adds this method later.
     end
 
     def self.call(env)
