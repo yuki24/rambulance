@@ -1,3 +1,11 @@
+## [v1.0.1](https://github.com/yuki24/rambulance/tree/v1.0.1)
+
+_<sup>released at 2019-06-04 16:30:38 UTC</sup>_
+
+#### Fixes
+
+- Fixes an issue where `ExceptionsApp` prevents Rails from booting up ([#49](https://github.com/yuki24/rambulance/issues/49))
+
 ## [v1.0.0](https://github.com/yuki24/rambulance/tree/v1.0.0)
 
 _<sup>released at 2019-06-03 05:01:14 UTC</sup>_
