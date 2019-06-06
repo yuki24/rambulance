@@ -1,3 +1,11 @@
+## [v1.0.2](https://github.com/yuki24/rambulance/tree/v1.0.2)
+
+_<sup>released at 2019-06-06 23:39:38 UTC</sup>_
+
+#### Fixes
+
+- Fixes a bug where `ExceptionsApp` is not loaded when action controller is not loaded ([<tt>ec9d9e5</tt>](https://github.com/yuki24/rambulance/commit/ec9d9e5de98eeec501042a0bbb95ae8ac8d7b4e3))
+
 ## [v1.0.1](https://github.com/yuki24/rambulance/tree/v1.0.1)
 
 _<sup>released at 2019-06-04 16:30:38 UTC</sup>_
