@@ -10,6 +10,7 @@ module Rambulance
           ActiveSupport::Dependencies.load_missing_constant(Object, :ExceptionsApp)
           ::ExceptionsApp.call(env)
         rescue NameError
+          require "rambulance/exceptions_app" if !defined?(::Rambulance::ExceptionsApp)
           ::Rambulance::ExceptionsApp.call(env)
         end
       }
