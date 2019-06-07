@@ -1,6 +1,6 @@
-# Rambulance [![Build Status](https://travis-ci.org/yuki24/rambulance.svg?branch=master)](https://travis-ci.org/yuki24/rambulance)
+# Rambulance [![Build Status](https://travis-ci.org/yuki24/rambulance.svg?branch=master)](https://travis-ci.org/yuki24/rambulance) [![Gem Version](https://badge.fury.io/rb/rambulance.svg)](https://rubygems.org/gems/rambulance)
 
-Rambulance provides a simple and safe way to dynamically render error pages for Rails apps.
+A simple and safe way to dynamically render error pages for Rails apps.
 
 ## Features
 
@@ -10,7 +10,7 @@ Rambulance's exceptions app is simple, skinny and well-tested. It  inherits from
 
 ### Flexible
 
-You have full control of showing a specific error page for a specific exception. It can also render json responses. It even provides a way to create a custom exceptions app.
+You have full control of which error page to show for a specific exception. It also json rendering (perfect for API apps). It even provides a way to create a custom exceptions app.
 
 ### Easy installation and development
 
@@ -30,7 +30,7 @@ And then execute:
 $ rails g rambulance:install
 ```
 
-Rambulance only has support for `erb`. If you would like to use haml or slim templates, please see [How to Convert Your `.erb` to `.slim`](https://github.com/slim-template/slim/wiki/Template-Converters-ERB-to-SLIM) or [html2haml](https://github.com/haml/html2haml).
+Rambulance's generator can only generate `erb` templates. If you want to use haml or slim templates, please see [How to Convert Your `.erb` to `.slim`](https://github.com/slim-template/slim/wiki/Template-Converters-ERB-to-SLIM) or [html2haml](https://github.com/haml/html2haml).
 
 Now you can start editing templates like `app/views/errors/not_found.html.erb`. Edit, run `rails server` and open [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/not_found)!
 
@@ -56,19 +56,10 @@ config.rescue_responses = {
 
 ## Local Development
 
-There are 2 ways of editing the templates.
-
-<!---
-### Open [`localhost:3000/rambulance`](http://localhost:3000/rambulance) in Your Browser
-
-This page tells all the error pages as well as all the pairs of exceptions/corresponding http status. This is useful when you want to edit templates without changing Rails configuration. Click on one of the links in the page to see what the error page looks like.
-
-**This feature hasn't been implemented yet.**
--->
-
 ### Open `localhost:3000/rambulance/***` in Your Browser
 
-Just go to one of the error pages via Rambulance:
+Just open one of the error pages via Rambulance:
+
  * [`localhost:3000/rambulance/not_found`](http://localhost:3000/rambulance/not_found) or
  * [`localhost:3000/rambulance/internal_server_error`](http://localhost:3000/rambulance/internal_server_error)
 
@@ -92,9 +83,9 @@ If you want to do some more things in a exceptions app, you can also write your 
 $ rails g rambulance:exceptions_app
 ```
 
-It'll generate your own custom exceptions app. You can use whatever techniques you use in controllers like `before_filter` and `flash[:notice] = "message..."` since it's a grandchild of `ActionController::Base`!
+It will generate your own custom exceptions app. You can use whatever techniques you want to use in controllers like `before_filter` and `flash[:notice] = "message..."` since it's a grandchild of `ActionController::Base`!
 
-**Note that customizing the exceptions app is strongly discouraged as there would be no guard against bugs that occur in the exceptions app.**
+**Heavily customizing the exceptions app is strongly discouraged as there would be no guard against bugs that occur in the exceptions app.**
 
 ## Testing
 
@@ -132,8 +123,8 @@ Note that testing error pages is not encouraged in Rails as it leads to overuse 
 
 ## Supported Versions
 
-* Ruby 2.3, 2,4, 2,5, trunk, JRuby 9.1.16.0, and JRuby head
-* Rails 4.2, 5.0, 5,1, 5,2 and edge
+* Ruby 2.3, 2,4, 2,5, 2.6, trunk, JRuby 9.2, and JRuby head
+* Rails 4.2, 5.0, 5,1, 5,2, 6.0 and edge
 
 Rambulance doesn't work with Rails 3.1 and below since they don't provide a way to use a custom exceptions app.
 
