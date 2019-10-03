@@ -1,3 +1,11 @@
+## [v1.0.3](https://github.com/yuki24/rambulance/tree/v1.0.3)
+
+_<sup>released at 2019-10-03 03:39:17 UTC</sup>_
+
+#### Fixes
+
+- Fixes a bug where custom exceptions app can not be loaded properly on Rails 6 and Zeitwerk ([#52](https://github.com/yuki24/rambulance/issues/52), [@sho918](https://github.com/sho918))
+
 ## [v1.0.2](https://github.com/yuki24/rambulance/tree/v1.0.2)
 
 _<sup>released at 2019-06-06 23:39:38 UTC</sup>_
@@ -58,7 +66,7 @@ _<sup>released at 2018-01-02 21:36:02 UTC</sup>_
 #### Breaking changes & deprecations
 
 - Drop support for Ruby 1.9.3
-- Drop support for generating Haml and Slim templates on `rails g rambulance:install`
+- Drop support for Haml and Slim templates
 
 #### Bug fixes
 
