@@ -8,6 +8,7 @@ class TestApp < Rails::Application
   config.eager_load = false
   config.root = File.dirname(__FILE__)
   config.autoload_paths += ["#{config.root}/lib"] if ENV["CUSTOM_EXCEPTIONS_APP"]
+  config.hosts = "www.example.com"
 
   if Rails::VERSION::STRING >= "5.2"
     config.action_controller.default_protect_from_forgery = true
