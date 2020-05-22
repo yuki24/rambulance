@@ -36,15 +36,23 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
     assert_equal "Something went wrong", json_response['message']
   end
 
-  test 'returns 422 properly' do
+  test 'returns an appropriate status based on the rails version when the HTTP Accept header is malformed' do
     if Rails::VERSION::STRING >= '5.1.0'
       post '/users', headers: { "HTTP_ACCEPT" => "image/apng*/*" }
     else
       post '/users', nil, "HTTP_ACCEPT" => "image/apng*/*"
     end
 
-    assert_equal 406, response.status
-    assert_equal "The requested content type is not acceptable.\n", response.body
+    if Rails::VERSION::STRING >= '6.0.0'
+      assert_equal 406, response.status
+      assert_equal "The requested content type is not acceptable.\n", response.body
+    elsif Rails::VERSION::STRING >= '5.2.0'
+      assert_equal 422, response.status
+    elsif Rails::VERSION::STRING >= '5.1.0'
+      assert_equal 500, response.status
+    elsif Rails::VERSION::STRING >= '4.2.0'
+      assert_equal 201, response.status
+    end
   end
 
   private
