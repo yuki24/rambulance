@@ -51,6 +51,7 @@ class ApplicationController < ActionController::Base
     raise "This is a bad filter."
   end
 end
+
 class UsersController < ApplicationController
   if self.respond_to? :skip_before_action
     skip_before_action :bad_filter, except: :show
@@ -80,6 +81,7 @@ class UsersController < ApplicationController
     raise ForbiddenException
   end
 end
+
 class ProjectsController < ApplicationController
   if self.respond_to?(:skip_forgery_protection)
     skip_forgery_protection

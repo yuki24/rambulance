@@ -36,6 +36,17 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
     assert_equal "Something went wrong", json_response['message']
   end
 
+  test 'returns 422 properly' do
+    if Rails::VERSION::STRING >= '5.1.0'
+      post '/users', headers: { "HTTP_ACCEPT" => "image/apng*/*" }
+    else
+      post '/users', nil, "HTTP_ACCEPT" => "image/apng*/*"
+    end
+
+    assert_equal 406, response.status
+    assert_equal "The requested content type is not acceptable.\n", response.body
+  end
+
   private
 
   def without_layouts
