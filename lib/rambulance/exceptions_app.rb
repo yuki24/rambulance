@@ -67,6 +67,12 @@ module Rambulance
         request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
       end
 
+      begin
+        request.accepts
+      rescue Mime::Type::InvalidMimeType
+        request.env["MALFORMED_HTTP_ACCEPT"], request.env["HTTP_ACCEPT"] = request.env["HTTP_ACCEPT"], "*/*"
+      end
+
       # The #formats method needs to be called after the sanitization above.
       request.formats << Mime::Type.lookup('text/plain')
 
