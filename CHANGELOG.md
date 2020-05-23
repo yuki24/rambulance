@@ -1,3 +1,7 @@
+## v1.2.0 (unreleased)
+
+- Your change comes here.
+
 ## [v1.1.0](https://github.com/yuki24/rambulance/tree/v1.1.0)
 
 _<sup>released at 2020-05-23 02:52:27 UTC</sup>_
