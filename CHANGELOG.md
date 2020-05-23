@@ -1,3 +1,15 @@
+## [v1.1.0](https://github.com/yuki24/rambulance/tree/v1.1.0)
+
+_<sup>released at 2020-05-23 02:52:27 UTC</sup>_
+
+#### Features
+
+- Add support for Ruby 2.7 ([<tt>718531c</tt>](https://github.com/yuki24/rambulance/commit/718531c45b61d01dce91f401fd81dd6aefdefb31))
+
+#### Bug fixes
+
+- Fixes a bug where malformed MIME type in HTTP headers could break the exceptions app ([#53](https://github.com/yuki24/rambulance/issues/53), [#54](https://github.com/yuki24/rambulance/pull/54), [@gingerlime](https://github.com/gingerlime))
+
 ## [v1.0.3](https://github.com/yuki24/rambulance/tree/v1.0.3)
 
 _<sup>released at 2019-10-03 03:39:17 UTC</sup>_
