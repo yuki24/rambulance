@@ -77,16 +77,8 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
   test 'GET returns an appropriate status based on the rails version when the HTTP Content-type header is malformed' do
     get '/projects.json', headers: { "CONTENT_TYPE" => "charset=gbk" }
 
-    if Rails::VERSION::STRING >= '6.0.0'
-      assert_equal 406, response.status
-      assert_equal "The requested content type is not acceptable.\n", response.body
-    elsif Rails::VERSION::STRING >= '5.2.0'
-      assert_equal 422, response.status
-    elsif Rails::VERSION::STRING >= '5.1.0'
-      assert_equal 500, response.status
-    elsif Rails::VERSION::STRING >= '4.2.0'
-      assert_equal 201, response.status
-    end
+    assert_equal 406, response.status
+    assert_equal "The requested content type is not acceptable.\n", response.body
   end
 
   private
