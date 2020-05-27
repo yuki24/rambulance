@@ -93,7 +93,7 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
     `mv error.html.erb test/fake_app/app/views/layouts/`
   end
 
-  def get(path, headers={})
+  def get(path, headers: {})
     without_layouts do
       if Rails::VERSION::STRING >= '5.1.0'
         super path, headers: { "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json" }.merge(headers)
