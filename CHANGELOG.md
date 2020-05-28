@@ -1,4 +1,4 @@
-## v1.2.0 (unreleased)
+## v1.1.1 (unreleased)
 
 - Fixes a bug where a malformed `Content-Type` header could break the exceptions app (#55, @gingerlime)
 

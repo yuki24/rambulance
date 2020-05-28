@@ -1,3 +1,3 @@
 module Rambulance
-  VERSION = "1.2.0-alpha"
+  VERSION = "1.1.1"
 end
