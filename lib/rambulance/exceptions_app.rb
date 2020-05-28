@@ -56,19 +56,21 @@ module Rambulance
 
     def process_action(*)
       begin
+        request.content_mime_type
+      rescue Mime::Type::InvalidMimeType
+        request.env["MALFORMED_CONTENT_TYPE"], request.env["CONTENT_TYPE"] = request.env["CONTENT_TYPE"], "text/plain"
+      end
+
+      begin
         request.GET
       rescue ActionController::BadRequest
         request.env["MALFORMED_QUERY_STRING"], request.env["QUERY_STRING"] = request.env["QUERY_STRING"], ""
-      rescue Mime::Type::InvalidMimeType
-        request.env["MALFORMED_CONTENT_TYPE"], request.env["CONTENT_TYPE"] = request.env["CONTENT_TYPE"], "text/plain"
       end
 
       begin
         request.POST
       rescue ActionController::BadRequest
         request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
-      rescue Mime::Type::InvalidMimeType
-        request.env["MALFORMED_CONTENT_TYPE"], request.env["CONTENT_TYPE"] = request.env["CONTENT_TYPE"], "text/plain"
       end
 
       begin
