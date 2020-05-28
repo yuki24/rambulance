@@ -1,6 +1,6 @@
 ## v1.2.0 (unreleased)
 
-- Your change comes here.
+- Fixes a bug where a malformed `Content-Type` header could break the exceptions app (#55, @gingerlime)
 
 ## [v1.1.0](https://github.com/yuki24/rambulance/tree/v1.1.0)
 
