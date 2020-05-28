@@ -1,6 +1,14 @@
-## v1.1.1 (unreleased)
+## v1.2.0-alpha (unreleased)
 
-- Fixes a bug where a malformed `Content-Type` header could break the exceptions app (#55, @gingerlime)
+- Add your change here
+
+## [v1.1.1](https://github.com/yuki24/rambulance/tree/v1.1.1)
+
+_<sup>released at 2020-05-28 23:22:10 UTC</sup>_
+
+#### Bug fixes
+
+- Fixes a bug where a malformed `Content-Type` header could break the exceptions app ([#55](https://github.com/yuki24/rambulance/pull/55), [@gingerlime](https://github.com/gingerlime))
 
 ## [v1.1.0](https://github.com/yuki24/rambulance/tree/v1.1.0)
 
