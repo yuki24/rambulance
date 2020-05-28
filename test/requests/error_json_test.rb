@@ -55,6 +55,32 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'returns an appropriate status based on the rails version when the HTTP Content-type header is malformed' do
+    if Rails::VERSION::STRING >= '5.1.0'
+      post '/users', headers: { "CONTENT_TYPE" => "charset=gbk" }
+    else
+      post '/users', nil, "CONTENT_TYPE" => "charset=gbk"
+    end
+
+    if Rails::VERSION::STRING >= '6.0.0'
+      assert_equal 406, response.status
+      assert_equal "The requested content type is not acceptable.\n", response.body
+    elsif Rails::VERSION::STRING >= '5.2.0'
+      assert_equal 422, response.status
+    elsif Rails::VERSION::STRING >= '5.1.0'
+      assert_equal 500, response.status
+    elsif Rails::VERSION::STRING >= '4.2.0'
+      assert_equal 201, response.status
+    end
+  end
+
+  test 'GET returns an appropriate status based on the rails version when the HTTP Content-type header is malformed' do
+    get '/projects.json', headers: { "CONTENT_TYPE" => "charset=gbk" }
+
+    assert_equal 406, response.status
+    assert_equal "The requested content type is not acceptable.\n", response.body
+  end
+
   private
 
   def without_layouts
