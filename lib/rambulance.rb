@@ -13,7 +13,7 @@ module Rambulance
   mattr_accessor :layout_name
   @@layout_name = "application"
 
-  # The directry name to organize error page templates.
+  # The directory name to organize error page templates.
   mattr_accessor :view_path
   @@view_path = "errors"
 
