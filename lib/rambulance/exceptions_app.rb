@@ -69,7 +69,7 @@ module Rambulance
 
       begin
         request.POST
-      rescue ActionController::BadRequest
+      rescue ActionController::BadRequest, ActionDispatch::Http::Parameters::ParseError
         request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
       end
 
