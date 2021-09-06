@@ -74,6 +74,17 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'returns an appropriate status when JSON data is malformed' do
+    if Rails::VERSION::STRING >= '5.1.0'
+      post '/unknown/path', params: 'x', headers: { "CONTENT_TYPE" => "application/json" }
+    else
+      post '/unknown/path', 'x', "CONTENT_TYPE" => "application/json"
+    end
+
+    assert_equal 404, response.status
+  end
+
+
   private
 
   def without_layouts
