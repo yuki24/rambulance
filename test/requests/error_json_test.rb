@@ -81,7 +81,11 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
       post '/unknown/path', 'x', "CONTENT_TYPE" => "application/json"
     end
 
-    assert_equal 404, response.status
+    if Rails::VERSION::STRING >= '5.0.0'
+      assert_equal 404, response.status
+    elsif Rails::VERSION::STRING >= '4.2.0'
+      assert_equal 400, response.status
+    end
   end
 
 

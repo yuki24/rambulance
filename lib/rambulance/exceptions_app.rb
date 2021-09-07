@@ -69,8 +69,16 @@ module Rambulance
 
       begin
         request.POST
-      rescue ActionController::BadRequest, ActionDispatch::Http::Parameters::ParseError
-        request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
+      rescue => e
+        if Rails::VERSION::STRING >= '5.2.0'
+          raise unless [ActionController::BadRequest, ActionDispatch::Http::Parameters::ParseError].include? e.class
+
+          request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
+        else
+          raise unless [ActionController::BadRequest, ActionDispatch::ParamsParser::ParseError].include? e.class
+
+          request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
+        end
       end
 
       begin
