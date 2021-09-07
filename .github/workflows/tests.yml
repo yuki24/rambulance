@@ -1,0 +1,43 @@
+name: Tests
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  unit_tests:
+    name: Unit Tests
+    strategy:
+      matrix:
+        os:
+          - ubuntu
+        ruby:
+          - 2.3.8
+          - 2.4.10
+          - 2.5.8
+          - 2.6.6
+          - 2.7.1
+          - ruby-head
+          - jruby-9.2.11.1
+          - jruby-head
+        gemfile:
+          - gemfiles/rails_42.gemfile
+          - gemfiles/rails_50.gemfile
+          - gemfiles/rails_51.gemfile
+          - gemfiles/rails_52.gemfile
+          - gemfiles/rails_60.gemfile
+          - gemfiles/rails_edge.gemfile
+    env:
+      BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Test
+        run: bundle exec rake spec
