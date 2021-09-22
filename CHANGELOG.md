@@ -1,17 +1,23 @@
-## v2.0.0
+## v2.1.0-alpha (unreleased)
+
+- Your change comes here...
+
+## [v2.0.0](https://github.com/yuki24/rambulance/tree/v2.0.0)
+
+_<sup>released at 2021-09-22 02:49:18 UTC</sup>_
 
 #### Breaking Changes
 
-- Drop support for Rails 4.1 and older (https://github.com/yuki24/rambulance/pull/62, @yuki24)
+- Drop support for Rails 4.1 and older ([#62](https://github.com/yuki24/rambulance/pull/62), [@yuki24](https://github.com/yuki24))
 
 #### Features
 
-- Add support for Rails 6.1 and Ruby 3.0 (https://github.com/yuki24/rambulance/pull/61, https://github.com/yuki24/rambulance/pull/63, @gingerlime, @yuki24)
+- Add support for Rails 6.1 and Ruby 3.0 ([#61](https://github.com/yuki24/rambulance/pull/61), [#63](https://github.com/yuki24/rambulance/pull/63), [@gingerlime](https://github.com/gingerlime), [@yuki24](https://github.com/yuki24))
 
 #### Bug fixes
 
-- POST with invalid JSON triggers a 500 (https://github.com/yuki24/rambulance/pull/59, @gingerlime)
-- Fix 'directry' typo (https://github.com/yuki24/rambulance/pull/57, @andyw8)
+- POST with invalid JSON triggers a 500 ([#59](https://github.com/yuki24/rambulance/pull/59), [@gingerlime](https://github.com/gingerlime))
+- Fix 'directry' typo ([#57](https://github.com/yuki24/rambulance/pull/57), [@andyw8](https://github.com/andyw8))
 
 ## [v1.1.1](https://github.com/yuki24/rambulance/tree/v1.1.1)
 
