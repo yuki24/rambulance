@@ -9,6 +9,16 @@ module Rambulance
     http_status >= 400 && ![418, 427, 430, 509].include?(http_status)
   end.invert
 
+  BAD_REQUEST_ERRORS = [
+    ActionController::BadRequest,
+    begin
+      ActionDispatch::Http::Parameters::ParseError # Rails >= 5.2.0
+    rescue NameError; end,
+    begin
+      ActionDispatch::ParamsParser::ParseError # Rails < 5.2.0
+    rescue NameError; end,
+  ].compact.freeze
+
   class ExceptionsApp < ActionController::Base
     layout :layout_name
 
@@ -69,16 +79,8 @@ module Rambulance
 
       begin
         request.POST
-      rescue => e
-        if Rails::VERSION::STRING >= '5.2.0'
-          raise unless [ActionController::BadRequest, ActionDispatch::Http::Parameters::ParseError].include? e.class
-
-          request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
-        else
-          raise unless [ActionController::BadRequest, ActionDispatch::ParamsParser::ParseError].include? e.class
-
-          request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
-        end
+      rescue *BAD_REQUEST_ERRORS
+        request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
       end
 
       begin
