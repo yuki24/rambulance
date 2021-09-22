@@ -1,87 +1,110 @@
-name: Tests
+name: build
+
 on:
-  pull_request:
-    branches:
-      - master
+  - push
+  - pull_request
 
 jobs:
-  unit_tests:
-    name: Unit Tests
+  stable:
     strategy:
       matrix:
-        os:
-          - ubuntu
-        ruby:
-          - 2.3.8
-          - 2.4.10
-          - 2.5.8
-          - 2.6.6
-          - 2.7.1
-          - ruby-head
-          - jruby-9.2.11.1
-          - jruby-head
+        ruby_version:
+          - '3.0'
+          - '2.7'
+          - '2.6'
+          - '2.5'
+          - '2.4'
+          - '2.3'
+          - 'jruby-9.2.19.0'
         gemfile:
-          - gemfiles/rails_42.gemfile
-          - gemfiles/rails_50.gemfile
-          - gemfiles/rails_51.gemfile
-          - gemfiles/rails_52.gemfile
+          - gemfiles/rails_61.gemfile
           - gemfiles/rails_60.gemfile
-          - gemfiles/rails_edge.gemfile
-        # see https://dev.to/pikachuexe/ruby-gems-ci-using-github-action-136o
-        allow_failures:
-          - false
-        # not-the-best workaround, see https://github.com/actions/toolkit/issues/399
-        include:
-          - os: ubuntu
-            ruby: ruby-head
-            gemfile: gemfiles/rails_edge.gemfile
-            allow_failures: true
-          - os: ubuntu
-            ruby: ruby-head
-            gemfile: gemfiles/rails_60.gemfile
-            allow_failures: true
+          - gemfiles/rails_52.gemfile
+          - gemfiles/rails_51.gemfile
+          - gemfiles/rails_50.gemfile
+          - gemfiles/rails_42.gemfile
         exclude:
-          - ruby: 2.3.8
-            gemfile: gemfiles/rails_60.gemfile
-          - ruby: 2.3.8
-            gemfile: gemfiles/rails_edge.gemfile
-          - ruby: 2.4.10
-            gemfile: gemfiles/rails_60.gemfile
-          - ruby: 2.4.10
-            gemfile: gemfiles/rails_edge.gemfile
-          - ruby: 2.5.8
-            gemfile: gemfiles/rails_edge.gemfile
-          - ruby: 2.6.6
-            gemfile: gemfiles/rails_42.gemfile
-          - ruby: 2.6.6
-            gemfile: gemfiles/rails_edge.gemfile
-          - ruby: 2.7.1
-            gemfile: gemfiles/rails_42.gemfile
-          - ruby: 2.7.1
-            gemfile: gemfiles/rails_50.gemfile
-          - ruby: 2.7.1
-            gemfile: gemfiles/rails_51.gemfile
-          - ruby: 2.7.1
+          - ruby_version: '3.0'
             gemfile: gemfiles/rails_52.gemfile
-          - ruby: jruby-9.2.11.1
-            gemfile: gemfiles/rails_edge.gemfile
-          - ruby: jruby-head
-            gemfile: gemfiles/rails_edge.gemfile
-          - ruby: ruby-head
+          - ruby_version: '3.0'
+            gemfile: gemfiles/rails_51.gemfile
+          - ruby_version: '3.0'
+            gemfile: gemfiles/rails_50.gemfile
+          - ruby_version: '3.0'
+            gemfile: gemfiles/rails_42.gemfile
+          - ruby_version: '2.7'
+            gemfile: gemfiles/rails_52.gemfile
+          - ruby_version: '2.7'
+            gemfile: gemfiles/rails_51.gemfile
+          - ruby_version: '2.7'
+            gemfile: gemfiles/rails_50.gemfile
+          - ruby_version: '2.7'
+            gemfile: gemfiles/rails_42.gemfile
+          - ruby_version: '2.6'
+            gemfile: gemfiles/rails_42.gemfile
+          - ruby_version: '2.4'
+            gemfile: gemfiles/rails_61.gemfile
+          - ruby_version: '2.4'
+            gemfile: gemfiles/rails_60.gemfile
+          - ruby_version: '2.3'
+            gemfile: gemfiles/rails_61.gemfile
+          - ruby_version: '2.3'
+            gemfile: gemfiles/rails_60.gemfile
+          - ruby_version: 'jruby-9.2.19.0'
+            gemfile: gemfiles/rails_51.gemfile
+          - ruby_version: 'jruby-9.2.19.0'
+            gemfile: gemfiles/rails_50.gemfile
+          - ruby_version: 'jruby-9.2.19.0'
+            gemfile: gemfiles/rails_42.gemfile
+    runs-on: ubuntu-18.04
     env:
-      BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
-      ALLOW_FAILURES: "${{ matrix.allow_failures }}"
-    runs-on: ${{ matrix.os }}-latest
-    # see https://dev.to/pikachuexe/ruby-gems-ci-using-github-action-136o
-    continue-on-error: ${{ endsWith(matrix.ruby, 'head') }}
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
-
-      - name: Setup Ruby
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
-      - name: Test
-        run: bundle exec rake test || $ALLOW_FAILURES
+      - run: bundle exec rake
+
+  rails_edge:
+    strategy:
+      matrix:
+        ruby_version:
+          - '3.0'
+          - '2.7'
+        gemfile:
+          - gemfiles/rails_edge.gemfile
+    runs-on: ubuntu-18.04
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - run: bundle exec rake
+
+  ruby_edge:
+    strategy:
+      matrix:
+        ruby_version:
+          - 'ruby-head'
+        gemfile:
+          - gemfiles/rails_edge.gemfile
+          - gemfiles/rails_61.gemfile
+          - gemfiles/rails_60.gemfile
+    runs-on: ubuntu-18.04
+    env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - run: bundle exec rake || echo "Ruby edge test is done."
