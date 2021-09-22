@@ -1,4 +1,4 @@
-# Rambulance [![Build Status](https://travis-ci.org/yuki24/rambulance.svg?branch=master)](https://travis-ci.org/yuki24/rambulance) [![Gem Version](https://badge.fury.io/rb/rambulance.svg)](https://rubygems.org/gems/rambulance)
+# Rambulance [![build](https://github.com/yuki24/rambulance/actions/workflows/tests.yml/badge.svg)](https://github.com/yuki24/rambulance/actions/workflows/tests.yml) [![Gem Version](https://badge.fury.io/rb/rambulance.svg)](https://rubygems.org/gems/rambulance)
 
 A simple and safe way to dynamically render error pages for Rails apps.
 
