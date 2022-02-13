@@ -1,6 +1,8 @@
-## v2.1.0-alpha (unreleased)
+## v2.1.0
 
-- Your change comes here...
+_<sup>released at 2022-02-22 07:52:27 UTC</sup>_
+
+- Add support for Ruby 3.1, Rails 7.0 and JRuby 9.3.3.0
 
 ## [v2.0.0](https://github.com/yuki24/rambulance/tree/v2.0.0)
 
