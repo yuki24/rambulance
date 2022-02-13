@@ -44,6 +44,8 @@ jobs:
           - ruby_version: '3.0'
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '2.7'
+            gemfile: gemfiles/rails_70.gemfile
+          - ruby_version: '2.7'
             gemfile: gemfiles/rails_52.gemfile
           - ruby_version: '2.7'
             gemfile: gemfiles/rails_51.gemfile
@@ -52,11 +54,19 @@ jobs:
           - ruby_version: '2.7'
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '2.6'
+            gemfile: gemfiles/rails_70.gemfile
+          - ruby_version: '2.6'
             gemfile: gemfiles/rails_42.gemfile
+          - ruby_version: '2.5'
+            gemfile: gemfiles/rails_70.gemfile
+          - ruby_version: '2.4'
+            gemfile: gemfiles/rails_70.gemfile
           - ruby_version: '2.4'
             gemfile: gemfiles/rails_61.gemfile
           - ruby_version: '2.4'
             gemfile: gemfiles/rails_60.gemfile
+          - ruby_version: '2.3'
+            gemfile: gemfiles/rails_70.gemfile
           - ruby_version: '2.3'
             gemfile: gemfiles/rails_61.gemfile
           - ruby_version: '2.3'
