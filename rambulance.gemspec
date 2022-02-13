@@ -6,7 +6,7 @@ require "rambulance/version"
 Gem::Specification.new do |spec|
   spec.name          = "rambulance"
   spec.version       = Rambulance::VERSION
-  spec.authors       = ["Yuki Nishijima"]
+  spec.authors       = ["Yuki Nishijima", "Yoav Aner"]
   spec.email         = ["mail@yukinishijima.net"]
   spec.summary       = %q{Simple and safe way to dynamically generate error pages}
   spec.description   = %q{Rambulance provides a simple and safe way to dynamically generate error pages.}
