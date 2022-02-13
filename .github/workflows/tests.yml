@@ -72,6 +72,8 @@ jobs:
           - ruby_version: '2.3'
             gemfile: gemfiles/rails_60.gemfile
           - ruby_version: 'jruby-9.3.3.0'
+            gemfile: gemfiles/rails_70.gemfile
+          - ruby_version: 'jruby-9.3.3.0'
             gemfile: gemfiles/rails_51.gemfile
           - ruby_version: 'jruby-9.3.3.0'
             gemfile: gemfiles/rails_50.gemfile
