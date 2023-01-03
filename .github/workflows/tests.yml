@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         ruby_version:
+          - '3.2'
           - '3.1'
           - '3.0'
           - '2.7'
@@ -25,6 +26,18 @@ jobs:
           - gemfiles/rails_50.gemfile
           - gemfiles/rails_42.gemfile
         exclude:
+          - ruby_version: '3.2'
+            gemfile: gemfiles/rails_61.gemfile
+          - ruby_version: '3.2'
+            gemfile: gemfiles/rails_60.gemfile
+          - ruby_version: '3.2'
+            gemfile: gemfiles/rails_52.gemfile
+          - ruby_version: '3.2'
+            gemfile: gemfiles/rails_51.gemfile
+          - ruby_version: '3.2'
+            gemfile: gemfiles/rails_50.gemfile
+          - ruby_version: '3.2'
+            gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '3.1'
             gemfile: gemfiles/rails_60.gemfile
           - ruby_version: '3.1'
@@ -92,6 +105,8 @@ jobs:
       - run: bundle exec rake
 
   rails_edge:
+    needs:
+      - stable
     runs-on: ubuntu-18.04
     env:
       BUNDLE_GEMFILE: gemfiles/rails_edge.gemfile
@@ -100,11 +115,13 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
+          ruby-version: 3.2
           bundler-cache: true
       - run: bundle exec rake
 
   ruby_edge:
+    needs:
+      - stable
     strategy:
       matrix:
         gemfile:
