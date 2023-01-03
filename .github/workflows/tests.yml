@@ -94,6 +94,10 @@ jobs:
           - ruby_version: 'jruby-9.3'
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: 'jruby-9.4'
+            gemfile: gemfiles/rails_60.gemfile
+          - ruby_version: 'jruby-9.4'
+            gemfile: gemfiles/rails_52.gemfile
+          - ruby_version: 'jruby-9.4'
             gemfile: gemfiles/rails_51.gemfile
           - ruby_version: 'jruby-9.4'
             gemfile: gemfiles/rails_50.gemfile
