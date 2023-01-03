@@ -16,7 +16,8 @@ jobs:
           - '2.5'
           - '2.4'
           - '2.3'
-          - 'jruby-9.3.3.0'
+          - 'jruby-9.3'
+          - 'jruby-9.4'
         gemfile:
           - gemfiles/rails_70.gemfile
           - gemfiles/rails_61.gemfile
@@ -124,6 +125,9 @@ jobs:
       - stable
     strategy:
       matrix:
+        ruby_version:
+          - 'ruby-head'
+          - 'jruby-head'
         gemfile:
           - gemfiles/rails_edge.gemfile
           - gemfiles/rails_70.gemfile
@@ -135,6 +139,6 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 'ruby-head'
+          ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
       - run: bundle exec rake || echo "Ruby edge test is done."
