@@ -44,7 +44,7 @@ appraise "rails_70" do
 end
 
 appraise "rails_edge" do
-  git 'git://github.com/rails/rails.git' do
+  git 'https://github.com/rails/rails.git' do
     gem "activesupport", require: 'active_support'
     gem "actionpack", require: 'action_pack'
     gem "railties"
