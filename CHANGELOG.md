@@ -1,3 +1,11 @@
+## [v2.3.0](https://github.com/yuki24/rambulance/tree/v2.3.0)
+
+_<sup>released at 2023-01-05 05:33:36 UTC</sup>_
+
+#### New Features
+
+- Ruby 3.2 is now officially supported.
+
 ## [v2.2.0](https://github.com/yuki24/rambulance/tree/v2.2.0)
 
 _<sup>released at 2022-02-13 07:56:32 UTC</sup>_
