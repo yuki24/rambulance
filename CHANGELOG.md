@@ -1,6 +1,8 @@
-## v2.2.0
+## [v2.2.0](https://github.com/yuki24/rambulance/tree/v2.2.0)
 
-_<sup>released at 2022-02-22 07:52:27 UTC</sup>_
+_<sup>released at 2022-02-13 07:56:32 UTC</sup>_
+
+#### Features
 
 - Add support for Ruby 3.1, Rails 7.0 and JRuby 9.3.3.0
 
