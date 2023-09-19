@@ -11,12 +11,12 @@ module Rambulance
 
   BAD_REQUEST_ERRORS = [
     ActionController::BadRequest,
-    begin
-      ActionDispatch::Http::Parameters::ParseError # Rails >= 5.2.0
-    rescue NameError; end,
-    begin
-      ActionDispatch::ParamsParser::ParseError # Rails < 5.2.0
-    rescue NameError; end,
+    # Rails >= 7.1.0
+    defined?(ActionDispatch::Http::MimeNegotiation::InvalidType) ? ActionDispatch::Http::MimeNegotiation::InvalidType : nil,
+    # Rails >= 5.2.0
+    defined?(ActionDispatch::Http::Parameters::ParseError) ? ActionDispatch::Http::Parameters::ParseError : nil,
+    # Rails < 5.2.0
+    defined?(ActionDispatch::ParamsParser::ParseError) ? ActionDispatch::ParamsParser::ParseError : nil
   ].compact.freeze
 
   class ExceptionsApp < ActionController::Base
@@ -87,6 +87,10 @@ module Rambulance
         request.accepts
       rescue Mime::Type::InvalidMimeType
         request.env["MALFORMED_HTTP_ACCEPT"], request.env["HTTP_ACCEPT"] = request.env["HTTP_ACCEPT"], "*/*"
+      end
+
+      if defined?(Rack::RACK_REQUEST_FORM_ERROR) && request.env.include?(Rack::RACK_REQUEST_FORM_ERROR)
+        request.env.delete(Rack::RACK_REQUEST_FORM_ERROR)
       end
 
       # The #formats method needs to be called after the sanitization above.

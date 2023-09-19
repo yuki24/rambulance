@@ -4,6 +4,7 @@ require 'jbuilder'
 class TestApp < Rails::Application
   config.secret_token = '964ab2f0fbbb68bc36f3cc487ca296bb8555fac50627924024c245a1599e5265'
   config.session_store :cookie_store, :key => '_myapp_session'
+  config.active_support.cache_format_version = 7.1 if Rails::VERSION::STRING >= "7.1"
   config.active_support.deprecation = :log
   config.eager_load = false
   config.root = File.dirname(__FILE__)

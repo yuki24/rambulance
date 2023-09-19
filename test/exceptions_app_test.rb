@@ -7,4 +7,3 @@ class ExeptionsAppTest < ActionDispatch::IntegrationTest
     assert_equal 404, response.status
   end
 end
-

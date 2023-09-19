@@ -2,28 +2,28 @@ require 'test_helper'
 
 class ErrorJsonTest < ActionDispatch::IntegrationTest
   test 'returns the 422 json for ActionController:InvalidAuthenticityToken but without its template' do
-    get '/users/new'
+    get_json '/users/new'
 
     assert_equal 422, response.status
     assert_equal "Something went wrong", json_response['message']
   end
 
   test 'returns the 500 json for RuntimeError' do
-    get '/users/1.json'
+    get_json '/users/1.json'
 
     assert_equal 500, response.status
     assert_equal "Something went wrong", json_response['message']
   end
 
   test 'returns the 404 json for CustomException' do
-    get '/users.json'
+    get_json '/users.json'
 
     assert_equal 404, response.status
     assert_equal "Page not found", json_response['message']
   end
 
   test 'returns the 404 json for ActinoController::RoutingError' do
-    get '/doesnt_exist.json'
+    get_json '/doesnt_exist.json'
 
     assert_equal 404, response.status
     assert_equal "Page not found", json_response['message']
@@ -92,21 +92,27 @@ class ErrorJsonTest < ActionDispatch::IntegrationTest
   private
 
   def without_layouts
-    `mv test/fake_app/app/views/layouts/application.html.erb .`
-    `mv test/fake_app/app/views/layouts/error.html.erb .`
+    if Rails::VERSION::STRING >= '7.1.0'
+      yield
+    else
+      begin
+        `mv test/fake_app/app/views/layouts/application.html.erb .`
+        `mv test/fake_app/app/views/layouts/error.html.erb .`
 
-    yield
-  ensure
-    `mv application.html.erb test/fake_app/app/views/layouts/`
-    `mv error.html.erb test/fake_app/app/views/layouts/`
+        yield
+      ensure
+        `mv application.html.erb test/fake_app/app/views/layouts/`
+        `mv error.html.erb test/fake_app/app/views/layouts/`
+      end
+    end
   end
 
-  def get(path, params: {}, headers: {})
+  def get_json(path, params: {}, headers: {})
     without_layouts do
       if Rails::VERSION::STRING >= '5.1.0'
-        super path, params: params, headers: { "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json" }.merge(headers)
+        get path, params: params, headers: { "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json" }.merge(headers)
       else
-        super path, params, { "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json" }.merge(headers)
+        get path, params, { "CONTENT_TYPE" => "application/json", "HTTP_ACCEPT" => "application/json" }.merge(headers)
       end
     end
   end
