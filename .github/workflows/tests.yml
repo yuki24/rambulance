@@ -14,8 +14,6 @@ jobs:
           - '2.7'
           - '2.6'
           - '2.5'
-          - '2.4'
-          - '2.3'
           - 'jruby-9.3'
           - 'jruby-9.4'
         gemfile:
@@ -73,18 +71,6 @@ jobs:
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '2.5'
             gemfile: gemfiles/rails_70.gemfile
-          - ruby_version: '2.4'
-            gemfile: gemfiles/rails_70.gemfile
-          - ruby_version: '2.4'
-            gemfile: gemfiles/rails_61.gemfile
-          - ruby_version: '2.4'
-            gemfile: gemfiles/rails_60.gemfile
-          - ruby_version: '2.3'
-            gemfile: gemfiles/rails_70.gemfile
-          - ruby_version: '2.3'
-            gemfile: gemfiles/rails_61.gemfile
-          - ruby_version: '2.3'
-            gemfile: gemfiles/rails_60.gemfile
           - ruby_version: 'jruby-9.3'
             gemfile: gemfiles/rails_70.gemfile
           - ruby_version: 'jruby-9.3'
