@@ -1,12 +1,14 @@
-## v3.0.0
+## [v3.0.0](https://github.com/yuki24/rambulance/tree/v3.0.0)
+
+_<sup>released at 2023-09-22 14:47:24 UTC</sup>_
 
 #### New Features
 
-- Add support for Rails 7.1 (`be6f129d`)
+- Add support for Rails 7.1 ([<tt>be6f129</tt>](https://github.com/yuki24/rambulance/commit/be6f129dd4c1d190e90a3036f7f1099028ef4a1e))
 
 #### Breaking Changes
 
-- Drop support for Ruby 2.3 and 2.4 (`c0d3439d`)
+- Drop support for Ruby 2.3 and 2.4 ([<tt>c0d3439</tt>](https://github.com/yuki24/rambulance/commit/c0d3439d64552a88cb934d57bc57d2c06ff593c9))
 
 ## [v2.3.0](https://github.com/yuki24/rambulance/tree/v2.3.0)
 
