@@ -99,7 +99,7 @@ TBD
 
 ```ruby
 # config/initializers/rambulance.rb
-config.static_error_pages = true
+config.static_error_pages = Rails.env.production?
 ```
 
 ### FAQ & Troubleshooting
