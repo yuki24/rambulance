@@ -7,7 +7,7 @@ class ExeptionsAppTest < ActionDispatch::IntegrationTest
     assert_equal 404, response.status
   end
 
-  if Rails.version > '4.2.0'
+  if Rails.version >= '5.0.0'
     test '#precompile! generates static HTML files for each error status' do
       Dir[Rails.public_path.join("*.html")].each do |file|
         File.delete(file)
