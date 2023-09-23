@@ -1,4 +1,8 @@
 require 'jbuilder'
+require 'rake'
+
+# This task needs to be defined before the Rails application is loaded so Rambulance can override it.
+Rake::Task.define_task('assets:precompile')
 
 # config
 class TestApp < Rails::Application
@@ -10,12 +14,14 @@ class TestApp < Rails::Application
   config.root = File.dirname(__FILE__)
   config.autoload_paths += ["#{config.root}/lib"] if ENV["CUSTOM_EXCEPTIONS_APP"]
   config.hosts = "www.example.com"
+  config.rambulance.static_error_pages = !!ENV["STATIC_ERROR_PAGES"]
 
   if Rails::VERSION::STRING >= "5.2"
     config.action_controller.default_protect_from_forgery = true
   end
 end
 Rails.backtrace_cleaner.remove_silencers!
+Rails.application.load_tasks if ENV["STATIC_ERROR_PAGES"]
 Rails.application.initialize!
 
 # routes
