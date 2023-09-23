@@ -7,18 +7,20 @@ class ExeptionsAppTest < ActionDispatch::IntegrationTest
     assert_equal 404, response.status
   end
 
-  test '#precompile! generates static HTML files for each error status' do
-    Dir[Rails.public_path.join("*.html")].each do |file|
-      File.delete(file)
+  if Rails.version > '4.2.0'
+    test '#precompile! generates static HTML files for each error status' do
+      Dir[Rails.public_path.join("*.html")].each do |file|
+        File.delete(file)
+      end
+  
+      Rambulance::ExceptionsApp.precompile!
+  
+      assert File.exist?(Rails.public_path.join("400.html"))
+      assert File.exist?(Rails.public_path.join("403.html"))
+      assert File.exist?(Rails.public_path.join("404.html"))
+      assert File.exist?(Rails.public_path.join("406.html"))
+      assert File.exist?(Rails.public_path.join("500.html"))
+      assert_not File.exist?(Rails.public_path.join("401.html"))
     end
-
-    Rambulance::ExceptionsApp.precompile!
-
-    assert File.exist?(Rails.public_path.join("400.html"))
-    assert File.exist?(Rails.public_path.join("403.html"))
-    assert File.exist?(Rails.public_path.join("404.html"))
-    assert File.exist?(Rails.public_path.join("406.html"))
-    assert File.exist?(Rails.public_path.join("500.html"))
-    assert_not File.exist?(Rails.public_path.join("401.html"))
   end
 end
