@@ -83,7 +83,7 @@ If you want to do some more things in a exceptions app, you can also write your 
 $ rails g rambulance:exceptions_app
 ```
 
-It will generate your own custom exceptions app. You can use most techniques you want to use in controllers like `before_filter`, `flash[:notice] = "message..."` and rendering views since it's a grandchild of `ActionController::Base`! However there are still some restrictions, e.g. setting a flash notice works when rendering directly but not when redirecting because the ActionDispatch::Flash middleware is never hit.
+It will generate your own custom exceptions app. You can use most techniques you want to use in controllers like `before_filter` and rendering views since it's a grandchild of `ActionController::Base`! However there are still some restrictions, e.g. setting a flash notice works when rendering directly but not when redirecting because the ActionDispatch::Flash middleware is never hit.
 
 **Heavily customizing the exceptions app is strongly discouraged as there would be no guard against bugs that occur in the exceptions app.**
 
