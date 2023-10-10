@@ -22,3 +22,4 @@ tmp
 *.a
 mkmf.log
 *.log
+test/fake_app/public/*.html

@@ -45,6 +45,19 @@ module Rambulance
       [Rambulance.view_path]
     end
 
+    def self.precompile!(env: {}, assigns: {})
+      ERROR_HTTP_STATUSES.each do |http_status, status_in_words|
+        begin
+          html = renderer.new(env).render(status_in_words, assigns: assigns)
+          path = Rails.public_path.join("#{http_status}.html").to_s
+
+          File.write(path, html)
+        rescue ActionView::MissingTemplate
+          Rails.logger.info "Template for #{http_status}(#{status_in_words}) does not exist. Skiping..."
+        end
+      end
+    end
+
     ERROR_HTTP_STATUSES.values.each do |status_in_words|
       eval <<-ACTION, nil, __FILE__, __LINE__ + 1
         def #{status_in_words}
