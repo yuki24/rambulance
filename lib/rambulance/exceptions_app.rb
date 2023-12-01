@@ -80,6 +80,7 @@ module Rambulance
       begin
         request.POST
       rescue *BAD_REQUEST_ERRORS
+        request.env["action_dispatch.request.request_parameters"] = {}
         request.env["MALFORMED_BODY"], request.env["rack.input"] = request.env["rack.input"], StringIO.new
       end
 
