@@ -136,7 +136,7 @@ jobs:
         with:
           ruby-version: 3.3
           bundler-cache: true
-      - run: bundle exec rake || echo "Rails edge test is done."
+      - run: bundle exec rake
 
   ruby_edge:
     needs:

@@ -28,7 +28,12 @@ module Rambulance #:nodoc:
       org_show_exceptions          = Rails.application.env_config['action_dispatch.show_exceptions']
 
       Rails.application.env_config['action_dispatch.show_detailed_exceptions'] = !enabled
-      Rails.application.env_config['action_dispatch.show_exceptions']          = enabled
+
+      if ActionDispatch::ExceptionWrapper.instance_methods.include?(:show?)
+        Rails.application.env_config['action_dispatch.show_exceptions'] = enabled ? :all : :none
+      else
+        Rails.application.env_config['action_dispatch.show_exceptions'] = enabled
+      end
 
       yield
     ensure
@@ -37,4 +42,3 @@ module Rambulance #:nodoc:
     end
   end
 end
-
