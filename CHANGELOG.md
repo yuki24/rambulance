@@ -1,3 +1,12 @@
+## v3.1.0
+
+_<sup>released at 2024-01-04 10:04:32 UTC</sup>_
+
+#### New Features
+
+- The test helper is now compatible with Rails Edge (8.0) (#73, #75)
+- Add support for Ruby 3.3 (#74)
+
 ## [v3.0.0](https://github.com/yuki24/rambulance/tree/v3.0.0)
 
 _<sup>released at 2023-09-22 14:47:24 UTC</sup>_
