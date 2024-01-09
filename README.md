@@ -123,8 +123,8 @@ Note that testing error pages is not encouraged in Rails as it leads to overuse 
 
 ## Supported Versions
 
-* Ruby 2.3, 2,4, 2,5, 2.6, 2.7, 3.0, 3.1, and JRuby 9.3
-* Rails 4.2, 5.0, 5.1, 5.2, 6.0, 6.1, 7.0 and edge
+* Ruby 2.5, 2.6, 2.7, 3.0, 3.1, 3.2, 3.3 and JRuby 9.3, 9.4
+* Rails 4.2, 5.0, 5.1, 5.2, 6.0, 6.1, 7.0, 7.1 and edge
 
 Rambulance doesn't work with Rails 3.1 and below since they don't provide a way to use a custom exceptions app.
 
