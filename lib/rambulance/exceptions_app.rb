@@ -38,7 +38,11 @@ module Rambulance
         end
       end
 
-      action(status_in_words).call(env)
+      if exception.nil? && status_in_words == :unprocessable_entity
+        [302, { "Location" => "/rambulance/unprocessable_content" }, [""]]
+      else
+        action(status_in_words).call(env)
+      end
     end
 
     def self.local_prefixes
@@ -51,6 +55,12 @@ module Rambulance
           render(template_exists?(error_path) ? error_path : error_path(:internal_server_error))
         end
       ACTION
+    end
+
+    def unprocessable_entity
+      unprocessable_content_path = error_path(:unprocessable_content)
+
+      render(template_exists?(unprocessable_content_path) ? unprocessable_content_path : error_path(:internal_server_error))
     end
 
     def process(action, *args)

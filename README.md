@@ -48,7 +48,7 @@ Then do the following:
 ```ruby
 # config/initializers/rambulance.rb
 config.rescue_responses = {
-  "ActiveRecord::RecordNotUnique" => :unprocessable_entity,
+  "ActiveRecord::RecordNotUnique" => :unprocessable_content,
   "CanCan::AccessDenied"          => :forbidden,
   "YourCustomException"           => :not_found
 }
