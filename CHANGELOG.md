@@ -1,4 +1,12 @@
-## [v3.1.0](https://github.com/yuki24/rambulance/tree/v3.1.0)
+## v3.2.0
+
+_<sup>unreleased</sup>_
+
+#### New Features
+
+- Fix the compatibility with Rack (see https://github.com/rack/rack/pull/2137) (#77 @tmaier, #78)
+#
+# [v3.1.0](https://github.com/yuki24/rambulance/tree/v3.1.0)
 
 _<sup>released at 2024-01-04 10:08:11 UTC</sup>_
 
