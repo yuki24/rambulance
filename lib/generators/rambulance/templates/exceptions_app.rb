@@ -11,6 +11,6 @@ class ExceptionsApp < Rambulance::ExceptionsApp
   def not_found
   end
 
-  def unprocessable_entity
+  def unprocessable_content
   end
 end
