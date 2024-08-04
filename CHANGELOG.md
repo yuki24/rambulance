@@ -1,12 +1,12 @@
-## v3.2.0
+## [v3.2.0](https://github.com/yuki24/rambulance/tree/v3.2.0)
 
-_<sup>unreleased</sup>_
+_<sup>released at 2024-08-04 03:04:26 UTC</sup>_
 
 #### New Features
 
-- Fix the compatibility with Rack (see https://github.com/rack/rack/pull/2137) (#77 @tmaier, #78)
-#
-# [v3.1.0](https://github.com/yuki24/rambulance/tree/v3.1.0)
+- Fix the compatibility with Rack (see [rack/rack#2137](https://github.com/rack/rack/pull/2137)) ([#77](https://github.com/yuki24/rambulance/issues/77) [@tmaier](https://github.com/tmaier), [#78](https://github.com/yuki24/rambulance/pull/78))
+
+## [v3.1.0](https://github.com/yuki24/rambulance/tree/v3.1.0)
 
 _<sup>released at 2024-01-04 10:08:11 UTC</sup>_
 
