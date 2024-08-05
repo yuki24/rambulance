@@ -54,6 +54,15 @@ config.rescue_responses = {
 }
 ```
 
+## Special case `unprocessable_entity`/`unprocessable_content` (HTTP Status 422)
+
+Rack renamed `unprocessable_entity` to `unprocessable_content`.
+
+Rambulance supports both, but defaults to `unprocessable_content` with version 3.2.0 and later.
+`unprocessable_entity` is supported with a redirect to `unprocessable_content`.
+
+This means the view file is called `app/views/errors/unprocessable_content.html.erb`, not `app/views/errors/unprocessable_entity.html.erb`.
+
 ## Local Development
 
 ### Open `localhost:3000/rambulance/***` in Your Browser
