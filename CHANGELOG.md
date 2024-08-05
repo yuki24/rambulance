@@ -2,9 +2,21 @@
 
 _<sup>released at 2024-08-04 03:04:26 UTC</sup>_
 
+This release includes a **breaking change**. Please read the details below carefully.
+
 #### New Features
 
-- Fix the compatibility with Rack (see [rack/rack#2137](https://github.com/rack/rack/pull/2137)) ([#77](https://github.com/yuki24/rambulance/issues/77) [@tmaier](https://github.com/tmaier), [#78](https://github.com/yuki24/rambulance/pull/78))
+- Fixed compatibility with Rack (see [rack/rack#2137](https://github.com/rack/rack/pull/2137)) ([#77](https://github.com/yuki24/rambulance/issues/77) [@tmaier](https://github.com/tmaier), [#78](https://github.com/yuki24/rambulance/pull/78))
+
+#### Breaking Changes
+
+The Rack compatibility fix is related to Rack becoming more compliant with the IANA HTTP Status Code Registry.
+As a result:
+
+- `unprocessable_entity` has been renamed to `unprocessable_content`.
+- Rambulance will redirect any request from `unprocessable_entity` to `unprocessable_content` for backward compatibility.
+- Users **must** rename the view file from `app/views/errors/unprocessable_entity.html.erb` to `app/views/errors/unprocessable_content.html.erb`.
+- Users **should** update the hash values in their configurations: Change `unprocessable_entity` to `unprocessable_content` in `config.rescue_responses`/`config.action_dispatch.rescue_responses`
 
 ## [v3.1.0](https://github.com/yuki24/rambulance/tree/v3.1.0)
 
