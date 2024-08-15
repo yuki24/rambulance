@@ -61,6 +61,4 @@ appraise "rails_edge" do
     gem "actionpack", require: 'action_pack'
     gem "railties"
   end
-
-  gem 'minitest', '~> 5.3.4'
 end

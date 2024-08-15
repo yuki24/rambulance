@@ -8,6 +8,6 @@ git "https://github.com/rails/rails.git" do
   gem "railties"
 end
 
-gem "minitest", "~> 5.3.4"
+gem "minitest", "< 5.25.0"
 
 gemspec path: "../"
