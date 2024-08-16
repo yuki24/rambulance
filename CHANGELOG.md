@@ -1,10 +1,10 @@
-## v3.3.0
+## [v3.3.0](https://github.com/yuki24/rambulance/tree/v3.3.0)
 
-_<sup>Unreleased</sup>_
+_<sup>released at 2024-08-16 05:32:59 UTC</sup>_
 
 #### New Features
 
-- Add support for Rails 7.1 ([<tt>e6d42b51</tt>](https://github.com/yuki24/rambulance/commit/e6d42b514d0bdbc2ea5b1603f85ecc9fa24b819a))
+- Add support for Rails 7.1 ([<tt>e6d42b5</tt>](https://github.com/yuki24/rambulance/commit/e6d42b514d0bdbc2ea5b1603f85ecc9fa24b819a))
 
 ## [v3.2.0](https://github.com/yuki24/rambulance/tree/v3.2.0)
 
@@ -14,11 +14,11 @@ This release includes a **breaking change**. Please read the details below caref
 
 #### New Features
 
-- Fixed compatibility with Rack (see [rack/rack#2137](https://github.com/rack/rack/pull/2137)) ([#77](https://github.com/yuki24/rambulance/issues/77) [@tmaier](https://github.com/tmaier), [#78](https://github.com/yuki24/rambulance/pull/78))
+- Fixed compatibility with Rack (see [rack/rack#2137](https://github.com/rack/rack/pull/2137)) ([#77](https://github.com/yuki24/rambulance/issues/77), [@tmaier](https://github.com/tmaier), [#78](https://github.com/yuki24/rambulance/pull/78))
 
 #### Breaking Changes
 
-The Rack compatibility fix is related to Rack becoming more compliant with the IANA HTTP Status Code Registry.
+The Rack compatibility fix is related to Rack becoming more compliant with the IANA HTTP Status Code Registry.  
 As a result:
 
 - `unprocessable_entity` has been renamed to `unprocessable_content`.
@@ -149,7 +149,7 @@ _<sup>released at 2018-03-08 18:36:16 UTC</sup>_
 #### New features
 
 - Add support for Rails 5.2
-- Add a test helper method `#with_exceptions_app` for easier testing ([<tt>f5c16b9</tt>](https://github.com/yuki24/rambulance/commit/f5c16b90ecf5eb4903faa30d760bf5863441e9c5), [#27](https://github.com/yuki24/rambulance/pull/27), [@kbaba1001](https://github.com/kbaba1001))
+- Add a test helper method `#with_exceptions_app ` for easier testing ([<tt>f5c16b9</tt>](https://github.com/yuki24/rambulance/commit/f5c16b90ecf5eb4903faa30d760bf5863441e9c5), [#27](https://github.com/yuki24/rambulance/pull/27), [@kbaba1001](https://github.com/kbaba1001))
 
 #### Bug fixes
 
