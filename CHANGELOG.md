@@ -1,3 +1,11 @@
+## v3.3.0
+
+_<sup>Unreleased</sup>_
+
+#### New Features
+
+- Add support for Rails 7.1 ([<tt>e6d42b51</tt>](https://github.com/yuki24/rambulance/commit/e6d42b514d0bdbc2ea5b1603f85ecc9fa24b819a))
+
 ## [v3.2.0](https://github.com/yuki24/rambulance/tree/v3.2.0)
 
 _<sup>released at 2024-08-04 03:04:26 UTC</sup>_
