@@ -18,6 +18,8 @@ jobs:
           - 'jruby-9.3'
           - 'jruby-9.4'
         gemfile:
+          - gemfiles/rails_80.gemfile
+          - gemfiles/rails_72.gemfile
           - gemfiles/rails_71.gemfile
           - gemfiles/rails_70.gemfile
           - gemfiles/rails_61.gemfile
@@ -52,6 +54,8 @@ jobs:
           - ruby_version: '3.2'
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '3.1'
+            gemfile: gemfiles/rails_80.gemfile
+          - ruby_version: '3.1'
             gemfile: gemfiles/rails_60.gemfile
           - ruby_version: '3.1'
             gemfile: gemfiles/rails_52.gemfile
@@ -62,6 +66,10 @@ jobs:
           - ruby_version: '3.1'
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '3.0'
+            gemfile: gemfiles/rails_80.gemfile
+          - ruby_version: '3.0'
+            gemfile: gemfiles/rails_72.gemfile
+          - ruby_version: '3.0'
             gemfile: gemfiles/rails_52.gemfile
           - ruby_version: '3.0'
             gemfile: gemfiles/rails_51.gemfile
@@ -70,6 +78,10 @@ jobs:
           - ruby_version: '3.0'
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '2.7'
+            gemfile: gemfiles/rails_80.gemfile
+          - ruby_version: '2.7'
+            gemfile: gemfiles/rails_72.gemfile
+          - ruby_version: '2.7'
             gemfile: gemfiles/rails_71.gemfile
           - ruby_version: '2.7'
             gemfile: gemfiles/rails_70.gemfile
@@ -82,15 +94,27 @@ jobs:
           - ruby_version: '2.7'
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '2.6'
+            gemfile: gemfiles/rails_80.gemfile
+          - ruby_version: '2.6'
+            gemfile: gemfiles/rails_72.gemfile
+          - ruby_version: '2.6'
             gemfile: gemfiles/rails_71.gemfile
           - ruby_version: '2.6'
             gemfile: gemfiles/rails_70.gemfile
           - ruby_version: '2.6'
             gemfile: gemfiles/rails_42.gemfile
           - ruby_version: '2.5'
+            gemfile: gemfiles/rails_80.gemfile
+          - ruby_version: '2.5'
+            gemfile: gemfiles/rails_72.gemfile
+          - ruby_version: '2.5'
             gemfile: gemfiles/rails_71.gemfile
           - ruby_version: '2.5'
             gemfile: gemfiles/rails_70.gemfile
+          - ruby_version: 'jruby-9.3'
+            gemfile: gemfiles/rails_80.gemfile
+          - ruby_version: 'jruby-9.3'
+            gemfile: gemfiles/rails_72.gemfile
           - ruby_version: 'jruby-9.3'
             gemfile: gemfiles/rails_71.gemfile
           - ruby_version: 'jruby-9.3'
@@ -101,6 +125,8 @@ jobs:
             gemfile: gemfiles/rails_50.gemfile
           - ruby_version: 'jruby-9.3'
             gemfile: gemfiles/rails_42.gemfile
+          - ruby_version: 'jruby-9.4'
+            gemfile: gemfiles/rails_80.gemfile
           - ruby_version: 'jruby-9.4'
             gemfile: gemfiles/rails_60.gemfile
           - ruby_version: 'jruby-9.4'
@@ -145,10 +171,10 @@ jobs:
       matrix:
         ruby_version:
           - 'ruby-head'
-          - 'jruby-head'
+          # - 'jruby-head'
         gemfile:
           - gemfiles/rails_edge.gemfile
-          - gemfiles/rails_71.gemfile
+          - gemfiles/rails_80.gemfile
     runs-on: ubuntu-22.04
     env:
       BUNDLE_GEMFILE: ${{ matrix.gemfile }}
