@@ -1,3 +1,17 @@
+## Unreleased
+
+#### 🚨 Breaking Changes
+
+- No changes.
+
+#### ⭐️ New Features
+
+- Add support for Rails 8.0 ([<tt>#81</tt>](https://github.com/yuki24/rambulance/pull/81))
+
+#### 🐞 Bug Fixes
+
+- No changes.
+
 ## [v3.3.0](https://github.com/yuki24/rambulance/tree/v3.3.0)
 
 _<sup>released at 2024-08-16 05:32:59 UTC</sup>_
