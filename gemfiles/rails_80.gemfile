@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "minitest", "< 5.25.0"
+gem "minitest"
 gem "activesupport", "~> 8.0.0"
 gem "actionpack", "~> 8.0.0"
 gem "railties", "~> 8.0.0"
